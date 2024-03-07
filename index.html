@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <style>
+        body{
+            background-color:azure;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        main{
+            width:90%;
+            max-width: 700px;
+            background-color:blanchedalmond;
+
+            border-radius: 8px;
+            padding:12px;
+
+            margin:auto;
+        
+        }
+
+        h1, .tema{
+            text-align: center;
+        }
+
+        h4{
+            margin-bottom:10px;
+        }
+
+        .question_container{
+           display: flex;
+           flex-direction: column;
+
+           margin-bottom:15px;
+        }
+
+        .question_container label{
+            margin: 7px;
+            margin-left:20px;
+        }
+
+        button{
+            margin: 20px auto;
+            display:block;
+
+            font-size: 14px;
+            padding:5px 10px;
+            cursor:pointer;
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1> Multiple Choice Quiz</h1> 
+        <h3 class="tema">Tema: IT</h3>         
+        
+        <div class="quiz_container">
+            <div class="question_container">
+                <h4>1. Hvem oppfant javaScript? </h4>
+                <label>
+                    <input type="radio" name="q1">Brendan Eich
+                 </label>
+                <label>
+                    <input type="radio" name="q1">Larry Wall
+                 </label>
+                <label>
+                    <input type="radio" name="q1">Rasmus Ledorf
+                 </label>
+            </div>
+            <div class="question_container">
+                <h4>2. JavaScript er det samme som java? </h4>
+                <label>
+                    <input type="radio" name="q2">Ja
+                 </label>
+                <label>
+                    <input type="radio" name="q2">Nei
+                 </label>
+            </div>
+        </div>
+
+        <button>Sjekk svar</button>
+
+        <p id="resultat"></p>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
