@@ -2,17 +2,38 @@
 const spillContainer = document.querySelector('#spillContainer')
 
 // Spillene; objekt
-let dino = {
+let dinoEl = {
     navn: "Dino",
-    link: "Dinogame/dino.html",
+    link: "DinoGame/dino.html",
     bgBilde: "bilder/Dino.png" 
 }
+let snakeEl = {
+    navn: "Snake",
+    link: "SnakeGame/snake.html",
+    bgBilde: "bilder/Snake.png"
+}
+let memoryEl = {
+    navn: "Memory",
+    link: "MemoryGame/memory.html",
+    bgBilde: "bilder/Memory.png"
+}
+let pingpongEl = {
+    navn: "PingPong",
+    link: "PingPongGame/pingpong.html",
+    bgBilde: "bilder/PingPong.png"
+}
+let triviaEl = {
+    navn: "Trivia",
+    link: "TriviaGame/trivia.html",
+    bgBilde: "bilder/Trivia.jpg"
+}
+
 
 // Spillene; array
-let spill = [dino]
+let spill = [dinoEl, snakeEl, memoryEl, pingpongEl, triviaEl]
 
 
-// Fill spillcontainer
+// FYll spillcontainer
 function LeggTilSpill(){
     for(let i = 0; i<spill.length; i++){
         // Lager html-elementene
@@ -33,11 +54,11 @@ function LeggTilSpill(){
         pEl.classList.add('spillTittel')
 
         //Legger de inn i hverandre
-        divEl.appendChild(pEl)
-        linkEl.appendChild(divEl)
+        divEl.appendChild(linkEl)
+        linkEl.appendChild(pEl)
 
         //Legger til i spill container
-        spillContainer.appendChild(linkEl)
+        spillContainer.appendChild(divEl)
     }
 }
 

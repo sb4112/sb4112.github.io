@@ -1,0 +1,63 @@
+/* Hele dokumentet */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+/* navbar */
+header {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #24252a;
+    padding: 30px 2%;
+}
+
+.navlinks{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color:white;
+}
+
+.navListe {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+.navListe > li{
+    padding:0px 30px;
+}
+
+.index{
+    font-weight: 800;
+}
+
+.navListe > li > .navlinks{
+    transition: all 0.3s ease;
+}
+
+.navListe > li > .navlinks:hover{
+    color:rgb(1, 126, 168);
+}
+
+#tilbakemelding{
+    padding: 10px 30px;
+    background-color: rgb(0, 136, 169, 1);
+    border: none;
+    border-radius:14px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+#tilbakemelding:hover{
+    background-color: rgb(0, 136, 169, 0.7);
+}

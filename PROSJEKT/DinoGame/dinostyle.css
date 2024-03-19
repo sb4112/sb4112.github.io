@@ -1,0 +1,13 @@
+/* Main */
+main{
+    display:flex; 
+    flex-direction:column; 
+    align-items: center;
+}
+
+/* Main */
+/* Spillbrett */
+#spillbrett{
+    background-color: rgb(162, 160, 134);
+    border-bottom: solid 4px black;
+}

@@ -1,71 +1,6 @@
-/* Hele dokumentet */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Body */
 body{
     background-image: url(bilder/Bakgrunn_landingPage.jpg);
-}
-
-/* Header */
-/* navbar */
-header {
-    display: flex;
-
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: #24252a;
-    padding: 30px 2%;
-}
-
-li,
-a {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    text-decoration: none;
-    color:white;
-}
-
-.navLinks {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    list-style: none;
-}
-
-.navLinks > li{
-    padding:0px 30px;
-}
-
-.index{
-    font-weight: 800;
-}
-
-.navLinks > li > a{
-    transition: all 0.3s ease;
-}
-
-.navLinks > li > a:hover{
-    color:rgb(1, 126, 168);
-}
-
-button{
-    padding: 10px 30px;
-    background-color: rgb(0, 136, 169, 1);
-    border: none;
-    border-radius:14px;
-    cursor:pointer;
-    transition: all 0.3s ease;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-}
-button:hover{
-    background-color: rgb(0, 136, 169, 0.7);
 }
 
 /* Main */
@@ -92,24 +27,52 @@ main{
 /* Main */
 /* Spill-container */
 #spillContainer{
-    border: solid 4px #24252a;
-    border-radius: 8%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 
-    height: 600px;
-    width: 600px;
+    border: solid 4px #24252a;
+    border-radius: 12px;
+
+    height: 80%;
+    width: 80%;
 }
 
 
 /* Spill-container */
 /* spillEl */
 .spillDiv{
-    border: solid 4px black;
-    border-radius: 12%;
+    background-color: #24252a;
 
-    width: 150px;
-    height: 100px;
+    width: 300px;
+    height: 200px;
 
     margin: 30px;
 
-    background-color: #24252a;
+    border: solid 3px black;
+    border-radius: 12%;
+
+    overflow: hidden;
+}
+.spillTittel{
+    background-color: rgb(67, 211, 240);
+
+    font-family: "rowdies", sans-serif;
+    color:white;
+    font-weight: 300;
+    font-size: larger;
+
+    width:110%;
+    height: 12%;
+    padding-left: 12%;
+}
+.spillLink{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-end;
+
+    text-decoration: none;
+
+    width:100%;
+    height:100%;
 }
