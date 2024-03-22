@@ -33,7 +33,7 @@ let triviaEl = {
 let spill = [dinoEl, snakeEl, memoryEl, pingpongEl, triviaEl]
 
 
-// FYll spillcontainer
+// Fyll spillcontainer
 function LeggTilSpill(){
     for(let i = 0; i<spill.length; i++){
         // Lager html-elementene

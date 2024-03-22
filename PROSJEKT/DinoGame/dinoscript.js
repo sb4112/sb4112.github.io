@@ -2,16 +2,22 @@
 let brettEl = document.querySelector('#spillbrett')
 let restartEl = document.querySelector('#restart')
 
+//restartEl.style.visibility = "hidden"
+// legger til den usynelige spillknappen på spillbrettet
+//brettEl.appendChild(restartEl)
+
 // Dino og spillbrett som objekter
 let brett = {
     bredde: 750,
-    hoyde: 250,
+    hoyde: 300,
 }
 
 let dino = {
     bredde: 88,
     hoyde: 94,
 }
+
+let dinoY = brett.hoyde - dino.hoyde
 
 //Cactus
 let cactusArray = []
@@ -34,7 +40,7 @@ let cactusHoyde = 70
 // spill-fysikk
 let velocityX = -8
 let velocityY = 0
-let gravity = 0.4
+let gravity = 1.14
 
 let gameOver = false
 let score = 0
@@ -51,6 +57,9 @@ let cactusYspawn = brett.hoyde - cactusHoyde
 // Setter spillbrettets høyde og bredde
 brettEl.height = brett.hoyde
 brettEl.width = brett.bredde
+
+// Siste gang cactus ble spawna
+let lastCactusSpawnTime = 0
 
 //tegner inn dino 
 let ctx = brettEl.getContext("2d")
@@ -71,14 +80,29 @@ let cactus3Img = new Image()
 cactus3Img.src = cactus3.img
 
 requestAnimationFrame(update)
-setInterval(plasserCactus, 1000)
 document.addEventListener('keydown', dinoJump)
 
 
 function update() {
     requestAnimationFrame(update)
-    if (gameOver){
+    if (gameOver) {
+        restartEl.style.visibility = "visible"
+
+    console.log(restartEl)
+    
+    restartEl.addEventListener('click', function () {
+        cactusArray.splice(0, cactusArray.length)
+        gameOver = false
+        score = 0
         
+        dinoImg.src = "dinoBilder/dino.png"
+        dinoImg.onload = function () {
+        ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+        }
+        
+        restartEl.blur()
+        })
+
         return
     }
 
@@ -88,11 +112,17 @@ function update() {
     velocityY += gravity
 
     console.log(velocityY)
-    dinoYspawn = Math.min(dinoYspawn + velocityY, 156)
+    dinoYspawn = Math.min(dinoYspawn + velocityY, dinoY)
 
     console.log(dinoYspawn)
     ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
 
+   
+    let currentTime = performance.now();
+    if (currentTime - lastCactusSpawnTime >= 1200) {
+        plasserCactus();
+        lastCactusSpawnTime = currentTime;
+    }
     //cactus
     for (let i = 0; i < cactusArray.length; i++) {
         let cactus = cactusArray[i]
@@ -110,7 +140,7 @@ function update() {
 
     ctx.fillStyle = "black"
     ctx.font = "20px courier"
-    score ++
+    score++
     ctx.fillText(score, 5, 20)
 
 
@@ -122,8 +152,8 @@ function dinoJump(e) {
         return
     }
 
-    if ((e.code == "Space" || e.code == "ArrowUp") && dinoYspawn == 156) {
-        velocityY = -10
+    if ((e.code == "Space" || e.code == "ArrowUp") && dinoYspawn == dinoY) {
+        velocityY = -20
     }
 }
 
@@ -164,17 +194,4 @@ function detectCollision(cactus) {
         dinoXspawn + dino.bredde > cactus.x &&
         dinoYspawn < cactus.y + cactus.height &&
         dinoYspawn + dino.hoyde > cactus.y
-} 
-
-restartEl.addEventListener('click', function(){
-    cactusArray.splice(0, cactusArray.length)
-    gameOver = false
-    score = 0
-
-    dinoImg.src = "dinoBilder/dino.png"
-dinoImg.onload = function () {
-    ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
 }
-
-    restartEl.blur()
-})
