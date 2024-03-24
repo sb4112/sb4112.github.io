@@ -1,10 +1,7 @@
 //Henter objekter fra DOM
 let brettEl = document.querySelector('#spillbrett')
-let restartEl = document.querySelector('#restart')
-
-//restartEl.style.visibility = "hidden"
-// legger til den usynelige spillknappen på spillbrettet
-//brettEl.appendChild(restartEl)
+let restartCont = document.querySelector('#restartCont')
+let gameOverCont = document.querySelector('#gameOver')
 
 // Dino og spillbrett som objekter
 let brett = {
@@ -40,7 +37,7 @@ let cactusHoyde = 70
 // spill-fysikk
 let velocityX = -8
 let velocityY = 0
-let gravity = 1.14
+let gravity = 1.05
 
 let gameOver = false
 let score = 0
@@ -80,30 +77,33 @@ let cactus3Img = new Image()
 cactus3Img.src = cactus3.img
 
 requestAnimationFrame(update)
+setInterval(plasserCactus, 1200)
 document.addEventListener('keydown', dinoJump)
 
 
 function update() {
     requestAnimationFrame(update)
     if (gameOver) {
-        restartEl.style.visibility = "visible"
-
-    console.log(restartEl)
+        gameOverCont.style.visibility = 'visible'
     
-    restartEl.addEventListener('click', function () {
+    restartCont.addEventListener('click', function () {
         cactusArray.splice(0, cactusArray.length)
-        gameOver = false
         score = 0
         
         dinoImg.src = "dinoBilder/dino.png"
         dinoImg.onload = function () {
         ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+
+        gameOver = false
         }
         
-        restartEl.blur()
+        restartCont.blur()
         })
 
         return
+    }
+    else{
+        gameOverCont.style.visibility = 'hidden'
     }
 
     ctx.clearRect(0, 0, brett.bredde, brett.hoyde)
@@ -111,18 +111,17 @@ function update() {
     //dino
     velocityY += gravity
 
-    console.log(velocityY)
     dinoYspawn = Math.min(dinoYspawn + velocityY, dinoY)
 
-    console.log(dinoYspawn)
     ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
 
    
-    let currentTime = performance.now();
+    /* let currentTime = performance.now();
     if (currentTime - lastCactusSpawnTime >= 1200) {
         plasserCactus();
         lastCactusSpawnTime = currentTime;
-    }
+    } */
+
     //cactus
     for (let i = 0; i < cactusArray.length; i++) {
         let cactus = cactusArray[i]

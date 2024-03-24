@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/PROSJEKT/fellesstyle.css">
-    <link rel="stylesheet" href="dinostyle.css">
-
     <!-- Henter fonten Montserrat fra google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="/PROSJEKT/fellesstyle.css">
+    <link rel="stylesheet" href="dinostyle.css">
 </head>
 <body>
     <header>
@@ -37,12 +37,12 @@
     <main>
         <h1>Dino-spill</h1>
 
-        <canvas id="spillbrett">
-            
-        </canvas>
+        <div id="gameOver">
+            <img src="dinoBilder/game-over.png" alt="game-over">
+            <div id="restartCont"></div>
+        </div>
 
-        <button id="restart">Restart</button>
-        
+        <canvas id="spillbrett"></canvas>
     </main>
 
     <script src="dinoscript.js"></script>
