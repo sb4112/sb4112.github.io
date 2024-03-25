@@ -1,20 +1,22 @@
 //Henter objekter fra DOM
-let brettEl = document.querySelector('#spillbrett')
+let boardEl = document.querySelector('#spillbrett')
 let restartCont = document.querySelector('#restartCont')
 let gameOverCont = document.querySelector('#gameOver')
+let scoreEl = document.querySelector('p')
+let scoreContainer = document.querySelector('#scoreCont')
 
 // Dino og spillbrett som objekter
-let brett = {
-    bredde: 750,
-    hoyde: 300,
+let board = {
+    width: 750,
+    height: 300,
 }
 
 let dino = {
-    bredde: 88,
-    hoyde: 94,
+    width: 88,
+    height: 94,
 }
 
-let dinoY = brett.hoyde - dino.hoyde
+let dinoY = board.height - dino.height
 
 //Cactus
 let cactusArray = []
@@ -32,7 +34,7 @@ let cactus3 = {
     img: "dinoBilder/cactus3.png"
 }
 
-let cactusHoyde = 70
+let cactusheight = 70
 
 // spill-fysikk
 let velocityX = -8
@@ -46,25 +48,25 @@ let score = 0
 
 // Lokasjon til dinosauren og cactusene på spillbrettet
 let dinoXspawn = 50
-let dinoYspawn = brett.hoyde - dino.hoyde
+let dinoYspawn = board.height - dino.height
 
 let cactusXspawn = 700
-let cactusYspawn = brett.hoyde - cactusHoyde
+let cactusYspawn = board.height - cactusheight
 
 // Setter spillbrettets høyde og bredde
-brettEl.height = brett.hoyde
-brettEl.width = brett.bredde
+boardEl.height = board.height
+boardEl.width = board.width
 
 // Siste gang cactus ble spawna
 let lastCactusSpawnTime = 0
 
 //tegner inn dino 
-let ctx = brettEl.getContext("2d")
+let ctx = boardEl.getContext("2d")
 
 let dinoImg = new Image()
 dinoImg.src = "dinoBilder/dino.png"
 dinoImg.onload = function () {
-    ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+    ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
 }
 
 let cactus1Img = new Image()
@@ -82,38 +84,41 @@ document.addEventListener('keydown', dinoJump)
 
 
 function update() {
-    requestAnimationFrame(update)
+    requestAnimationFrame(update) 
     if (gameOver) {
         gameOverCont.style.visibility = 'visible'
+        scoreCont.style.visibility = 'visible'
     
-    restartCont.addEventListener('click', function () {
-        cactusArray.splice(0, cactusArray.length)
-        score = 0
-        
-        dinoImg.src = "dinoBilder/dino.png"
-        dinoImg.onload = function () {
-        ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+        restartCont.addEventListener('click', function () {
+            cactusArray.splice(0, cactusArray.length)
+            score = 0
+            
+            dinoImg.src = "dinoBilder/dino.png"
+            dinoImg.onload = function () {
+            ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
+            }
 
-        gameOver = false
-        }
-        
-        restartCont.blur()
+            gameOver = false
+            
+            restartCont.blur()
         })
 
+        scoreEl.innerHTML = `New score : ${score}`
         return
     }
     else{
         gameOverCont.style.visibility = 'hidden'
+        scoreCont.style.visibility = 'hidden'
     }
 
-    ctx.clearRect(0, 0, brett.bredde, brett.hoyde)
+    ctx.clearRect(0, 0, board.width, board.height)
 
     //dino
     velocityY += gravity
 
     dinoYspawn = Math.min(dinoYspawn + velocityY, dinoY)
 
-    ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+    ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
 
    
     /* let currentTime = performance.now();
@@ -132,7 +137,7 @@ function update() {
             gameOver = true
             dinoImg.src = "dinoBilder/dino-dead.png"
             dinoImg.onload = function () {
-                ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.bredde, dino.hoyde)
+                ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
             }
         }
     }
@@ -163,7 +168,7 @@ function plasserCactus() {
         x: cactusXspawn,
         y: cactusYspawn,
         width: null,
-        height: cactusHoyde
+        height: cactusheight
     }
 
     let plasserCactusSjanse = Math.random();
@@ -188,9 +193,11 @@ function plasserCactus() {
     }
 }
 
+
+// her må det tegnes
 function detectCollision(cactus) {
     return dinoXspawn < cactus.x + cactus.width &&
-        dinoXspawn + dino.bredde > cactus.x &&
+        dinoXspawn + dino.width > cactus.x &&
         dinoYspawn < cactus.y + cactus.height &&
-        dinoYspawn + dino.hoyde > cactus.y
+        dinoYspawn + dino.height > cactus.y
 }

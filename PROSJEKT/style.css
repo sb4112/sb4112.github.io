@@ -28,7 +28,7 @@ main{
 /* Spill-container */
 #spillContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around ;
     flex-wrap: wrap;
 
     border: solid 4px #24252a;

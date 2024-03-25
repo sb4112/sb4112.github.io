@@ -1,15 +1,52 @@
+/* Body */
+body{
+    background-image: url(/PROSJEKT/DinoGame/dinoBilder/background.png);
+    background-size: cover;
+    
+}
+
 /* Main */
 main{
     display:flex; 
     flex-direction:column; 
+    align-items: center;
+
+    margin-top: 20px;
+}
+/* Main */
+/* Headline */
+h1, p{
+    font-family: "DePixel", sans-serif;
+}
+
+
+
+/* Main */
+/* Spillcontainer */
+#spillContainer{
+    display:flex; 
+    flex-direction:column; 
     justify-content: center;
     align-items: center;
+
+    padding: 20px;
+}
+
+/* Main */
+/* scoreContainer */
+#scoreCont{
+    background-color: rgb(217, 217, 217);
+
+    visibility: hidden;
+
+    padding: 20px;
+    border-radius: 12px;
 }
 
 /* Main */
 /* Spillbrett */
 #spillbrett{
-    background-color: rgb(162, 160, 134);
+    background-color: rgb(217, 217, 217);
     border-bottom: solid 4px black;
 
     display: flex;

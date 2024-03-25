@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dino-game</title>
 
     <!-- Henter fonten Montserrat fra google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,40 +12,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
-    <!-- Henter fontetn rowdies fra google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap"
-        rel="stylesheet">
+    <!-- Henter fontetn de Pixel fra google fonts -->
+    <link href="https://fonts.cdnfonts.com/css/depixel" rel="stylesheet">
+
+
 
     <link rel="stylesheet" href="/PROSJEKT/fellesstyle.css">
     <link rel="stylesheet" href="dinostyle.css">
 </head>
+
 <body>
     <header>
         <ul class="navListe">
-            <li><a href="/PROSJEKT/index.html" id="index" class="navlinks">Hjem</a></li>
+            <li><a href="/PROSJEKT/index.html" id="index" class="navlinks">Home</a></li>
         </ul>
         <nav>
             <ul class="navListe">
-                <li><a class="navlinks" href="#">Om spillene</a></li>
-                <li><a class="navlinks" href="#">Ledertavle</a></li>
-                <li><a class="navlinks" href="#" class="feedback"><button id="tilbakemelding">Tilbakemelding</button></a></li>
+                <li><a class="navlinks" href="#">About</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Leaderboard/leaderboard.html">Leaderboard</a></li>
+                <li><a class="navlinks" href="#"><button id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Dino-spill</h1>
+        <h1>Dino-game</h1>
 
-        <div id="gameOver">
-            <img src="dinoBilder/game-over.png" alt="game-over">
-            <div id="restartCont"></div>
+        <div id="spillContainer">
+            <div id="gameOver">
+                <img src="dinoBilder/game-over.png" alt="game-over">
+                <div id="restartCont"></div>
+            </div>
+
+            <canvas id="spillbrett"></canvas>
         </div>
 
-        <canvas id="spillbrett"></canvas>
+        <div id="scoreCont">
+            <p>New score : </p>
+        </div>
     </main>
 
-    <script src="dinoscript.js"></script>
+    <script src="dinoscript.js" type="module"></script>
 </body>
+
 </html>
