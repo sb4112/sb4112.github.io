@@ -55,10 +55,16 @@ async function getQuestion() {
         // Lager label og radio-element
         let labelEl = document.createElement('label')
         let radioEl = document.createElement('input')
+
+        radioEl.classList.add('checkedAnsw') 
+        labelEl.classList.add('checkedAnswLabel')
         
         radioEl.type = 'radio'
         radioEl.name = `Options`
         radioEl.value = options[t]
+
+        console.log(radioEl)
+        console.log(labelEl)
 
         labelEl.appendChild(radioEl)
 
@@ -74,26 +80,34 @@ let UserAnswer
 // Henter inn radio-elementene lagd i funksjonen ovenfor
 function checkAnswer(){
     let radioEls = document.querySelectorAll('input[type="radio"]')
+    let checked = false
     
     for(let s = 0; s < radioEls.length; s++){
         console.log(radioEls[s].value)
         if(radioEls[s].checked){
             UserAnswer = radioEls[s].value
+            checked = true
         }
+    }
+    console.log(checked)
+
+    if(checked == false){
+        console.log(checked)
+        scoreEl.innerHTML = "vennligst kryss av en boks"
+        return
     }
 
     console.log(UserAnswer)
     if(UserAnswer == correctAnswer){
         score +=1
+        scoreEl.innerHTML = `Du har ${score} riktige svar på rad!` 
     }
-    else{
-        score = 0
+    else if(UserAnswer != correctAnswer){
+        scoreEl.innerHTML = `Ops! Feil svar, prøv igjen`
+        score = 0 
     }
-
-    scoreEl.innerHTML = score
+    setTimeout(getQuestion, 900)
 }
 
 getQuestion()
-checkAnswerEl.addEventListener('click', function(){
-    checkAnswer()
-    getQuestion()})
+checkAnswerEl.addEventListener('click', checkAnswer)

@@ -2,6 +2,7 @@
 body{
     background-image: url(/PROSJEKT/DinoGame/dinoBilder/background.png);
     background-size: cover;
+    background-repeat: no-repeat;
     
 }
 
@@ -69,6 +70,7 @@ h1, p{
     height: 45px;
     background-image: url(dinoBilder/reset.png);
     background-size:cover;
+
 
     border-radius: 12%;
 

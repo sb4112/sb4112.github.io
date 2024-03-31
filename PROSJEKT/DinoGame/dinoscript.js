@@ -37,9 +37,9 @@ let cactus3 = {
 let cactusheight = 70
 
 // spill-fysikk
-let velocityX = -8
+let velocityX = -3.8
 let velocityY = 0
-let gravity = 1.05
+let gravity = 0.272
 
 let gameOver = false
 let score = 0
@@ -78,25 +78,35 @@ cactus2Img.src = cactus2.img
 let cactus3Img = new Image()
 cactus3Img.src = cactus3.img
 
-requestAnimationFrame(update)
-setInterval(plasserCactus, 1200)
+/* requestAnimationFrame(update) */
+/* setInterval(plasserCactus, 1200) */
 document.addEventListener('keydown', dinoJump)
 
 
+let intervalID = setInterval(update, 10.00); 
+
+let cactusSpawnTime = performance.now();
+
+
 function update() {
-    requestAnimationFrame(update) 
+
     if (gameOver) {
         gameOverCont.style.visibility = 'visible'
         scoreCont.style.visibility = 'visible'
+        clearInterval(intervalID)
     
         restartCont.addEventListener('click', function () {
+            console.log("hieiei")
             cactusArray.splice(0, cactusArray.length)
             score = 0
             
             dinoImg.src = "dinoBilder/dino.png"
             dinoImg.onload = function () {
             ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
+
+            intervalID = setInterval(update, 10.00);
             }
+        
 
             gameOver = false
             
@@ -110,8 +120,23 @@ function update() {
         gameOverCont.style.visibility = 'hidden'
         scoreCont.style.visibility = 'hidden'
     }
+    
+    
+    let currentTime = performance.now();
+    console.log("currenct time: "+ currentTime)
+    console.log(cactusSpawnTime)
 
-    ctx.clearRect(0, 0, board.width, board.height)
+    
+    let timeSinceLastCactusSpawn = currentTime - cactusSpawnTime;
+    console.log("time since last cactus spawn: " + timeSinceLastCactusSpawn)
+
+   
+    if (timeSinceLastCactusSpawn >= 1200) {
+        plasserCactus();
+        cactusSpawnTime = currentTime; 
+    } 
+
+    ctx.clearRect(0, 0, board.width, board.height) 
 
     //dino
     velocityY += gravity
@@ -120,12 +145,6 @@ function update() {
 
     ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
 
-   
-    /* let currentTime = performance.now();
-    if (currentTime - lastCactusSpawnTime >= 1200) {
-        plasserCactus();
-        lastCactusSpawnTime = currentTime;
-    } */
 
     //cactus
     for (let i = 0; i < cactusArray.length; i++) {
@@ -144,7 +163,7 @@ function update() {
 
     ctx.fillStyle = "black"
     ctx.font = "20px courier"
-    score++
+    score += 1
     ctx.fillText(score, 5, 20)
 
 
@@ -157,7 +176,7 @@ function dinoJump(e) {
     }
 
     if ((e.code == "Space" || e.code == "ArrowUp") && dinoYspawn == dinoY) {
-        velocityY = -20
+        velocityY = -10.6
     }
 }
 
