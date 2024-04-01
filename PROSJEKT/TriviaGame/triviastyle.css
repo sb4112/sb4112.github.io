@@ -1,9 +1,16 @@
+/* Body */
+body{
+    background-color: aliceblue;
+}
+
 /* Main */
 /* Triviacontainer */
 #triviaContainer{
     display:flex;
     flex-direction: column;
     align-items: center;
+
+    font-family: "Inter", sans-serif;
 }
 /* Triviacontainer */
 /* functioncontainer */
@@ -13,6 +20,8 @@
     align-items: center;
     padding: 20px;
     margin: 15px;
+
+    width: 100%;
 }
 /* functionContainer */
 /* Optioncontainer */
@@ -20,58 +29,150 @@
     display: grid;
 
     grid-template-columns: 1fr 1fr;
+    width: 100%;
 
     margin-top: 20px;
 
-    border: 2px solid black;
+    border: 0px solid black;
     border-radius: 12px;
 
     overflow: hidden;
+
+    background-color: white;
 }
 /* Optioncontainer */
 /* radiobuttons */
-.checkedAnsw{
+.radioBtns{
     display: none;
 }
 /* optioncontainer */
 /* labels */
-.checkedAnswLabel{
+.radioBtnsLabel{
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    width: 200px;
-    height:50px;
-
     border: 0.3px solid rgb(223, 222, 222);
+
+    height: 60px;
     
     padding-left: 25px;
     padding-right: 7px;
     cursor:pointer;
 }
-.checkedAnswLabel:has(>.checkedAnsw:checked){ /* //style parent fra et child med pseudoselektor */
-    background-color :rgb(0, 136, 169, 1);
+.radioBtnsLabel:has(>.radioBtns:checked){ /* //style parent fra et child med pseudoselektor */
+    background-color: rgb(152, 224, 244);
 }
-.checkedAnswLabel:hover{
-    background-color: rgb(192, 185, 185, 0.6);
+.radioBtnsLabel:hover{
+    background-color: rgba(237, 235, 235, 0.6);
 }
 /* optioncontainer */
 /* label + radiobutton */
-.checkedAnsw .checkedAnswLabel {
-    width:200px;
-    height: 50px;;
-
+.radioBtns .radioBtnsLabel {
     display:flex;
     flex-direction: column;
     align-items: flex-start;
 }
+/* Optioncontainer */
+/* right answer */
+
+/* Optioncontainer */
+/* wrong answer */
+
+/* FunctionContainer */
+/* statsContainer */
+#statsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    width: 800px;
+}
+#scoreCont{
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+#skipsCont{
+    margin-top: 45px;
+
+    display: flex;
+    justify-content:flex-end ;
+}
+#wrongAnswCont{
+    margin-top: 45px;
+
+    display: flex;
+    justify-content:flex-start;
+}
+
+#score, #skips, #wrongAnswers{
+    border-bottom: 0.6px solid grey;
+}
 /* FunctionContainer */
 /* buttoncontainer */
 #buttonContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-    width: 400px;
-    margin-top: 8px;
+    width:450px;
+    margin-top: 18px;
 }
+/* buttoncontainer */
+/* select catagory / answer / next question / restart */
+#catagory{
+    padding: 12px;
+
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-right:none;
+    border-width: 0px;
+
+    cursor: pointer;
+}
+#checkAnswer{
+    padding: 12px;
+
+    border-right: none;
+    border-left: none;
+    border-width: 0px;
+
+    cursor: pointer;
+
+    background-color: white;
+}
+#nextQuestion{
+    padding: 12px;
+    
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-width: 0px;
+    border-left: none;
+
+    background-color:rgb(20, 229, 159);
+
+    cursor: pointer;
+}
+.restartBtn{
+    padding: 12px;
+    
+    border-width: 0px;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background-color: white;
+}
+
+/* buttoncontainer */
+/* hover-effcts */
+#catagory:hover{
+    background-color:rgba(237, 235, 235, 0.6) ;
+}
+#checkAnswer:hover{
+    background-color: rgba(237, 235, 235, 0.6)
+}
+#nextQuestion:hover{
+    opacity: 0.78;
+}
+
+

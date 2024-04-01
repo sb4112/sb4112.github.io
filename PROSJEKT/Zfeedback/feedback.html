@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
+    <title>Index</title>
 
     <!-- Henter fonten Montserrat fra google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="feedbackstyle.css">
     <link rel="stylesheet" href="/PROSJEKT/fellesstyle.css">
-    <link rel="stylesheet" href="leaderboardStyle.css">
 </head>
+
 <body>
     <header>
         <ul class="navListe">
@@ -27,19 +29,9 @@
         </ul>
         <nav>
             <ul class="navListe">
-                <li><a class="navlinks" href="#">About</a></li>
-                <li><a class="navlinks" href="leaderboard.html">Leaderboard</a></li>
-                <li><a class="navlinks" href="#"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">About</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">Leaderboard</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
-
-    <main>
-        <div id="leaderboards">
-            <p>tanke: importer objekter fra script.js. Om mulig legg til score som en nøkkel i hvert objekt (array med scores sortert stigenede, bruk sorteringsfunksjon og derreter fjern elementer utenfor 5 beste). Import objekter samt array inn i leaderboardscriptet. lignende som i script.js, travarser arrayet med spill og lag leaderboards til hver enkelt hvor jeg legger til verdier osv.</p>
-        </div>
-    </main>
-    
-    <script src="leaderboardScript.js" type="module"></script>
-</body>
-</html>

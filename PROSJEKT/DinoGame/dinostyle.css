@@ -1,9 +1,6 @@
 /* Body */
 body{
-    background-image: url(/PROSJEKT/DinoGame/dinoBilder/background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    
+    background-color: rgb(228, 176, 119);
 }
 
 /* Main */
@@ -13,6 +10,24 @@ main{
     align-items: center;
 
     margin-top: 20px;
+}
+
+/* Main */
+/* DinoContainer */
+#dinoContainer{
+    display:flex; 
+    flex-direction:column; 
+    align-items: center;
+
+    background-image: url(/PROSJEKT/DinoGame/dinoBilder/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding-top: 20px;
+    padding-bottom: 12px;
+
+    border-radius: 12px;
+    width: 95%;
 }
 /* Main */
 /* Headline */

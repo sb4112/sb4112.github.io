@@ -28,27 +28,29 @@
         </ul>
         <nav>
             <ul class="navListe">
-                <li><a class="navlinks" href="#">About</a></li>
-                <li><a class="navlinks" href="/PROSJEKT/Leaderboard/leaderboard.html">Leaderboard</a></li>
-                <li><a class="navlinks" href="#"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">About</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">Leaderboard</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Dino-game</h1>
+        <div id="dinoContainer">
+            <h1>Dino-game</h1>
 
-        <div id="spillContainer">
-            <div id="gameOver">
-                <img src="dinoBilder/game-over.png" alt="game-over">
-                <div id="restartCont"></div>
+            <div id="spillContainer">
+                <div id="gameOver">
+                    <img src="dinoBilder/game-over.png" alt="game-over">
+                    <div id="restartCont"></div>
+                </div>
+
+                <canvas id="spillbrett"></canvas>
             </div>
 
-            <canvas id="spillbrett"></canvas>
-        </div>
-
-        <div id="scoreCont">
-            <p>New score : </p>
+            <div id="scoreCont">
+                <p>New score : </p>
+            </div>
         </div>
     </main>
 

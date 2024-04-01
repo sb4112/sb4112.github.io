@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Leaderboard</title>
 
     <!-- Henter fonten Montserrat fra google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fellesstyle.css">
+    <link rel="stylesheet" href="/PROSJEKT/fellesstyle.css">
+    <link rel="stylesheet" href="leaderboardStyle.css">
 </head>
-
 <body>
     <header>
         <ul class="navListe">
@@ -37,15 +35,11 @@
     </header>
 
     <main>
-        <div id="overskrift">
-            <h1>Minigames</h1>
+        <div id="leaderboards">
+            <p>tanke: importer objekter fra script.js. Om mulig legg til score som en nøkkel i hvert objekt (array med scores sortert stigenede, bruk sorteringsfunksjon og derreter fjern elementer utenfor 5 beste). Import objekter samt array inn i leaderboardscriptet. lignende som i script.js, travarser arrayet med spill og lag leaderboards til hver enkelt hvor jeg legger til verdier osv.</p>
         </div>
-
-        <div id="spillContainer"></div>
     </main>
-
-
-    <script src="script.js" type="module"></script>
+    
+    <script src="leaderboardScript.js" type="module"></script>
 </body>
-
 </html>
