@@ -118,7 +118,7 @@ body{
     margin-top: 18px;
 }
 /* buttoncontainer */
-/* select catagory / answer / next question / restart */
+/* select catagory / answer / next question / restart / refresh */
 #catagory{
     padding: 12px;
 
@@ -161,6 +161,16 @@ body{
     cursor: pointer;
 
     background-color: white;
+}
+.refresh_429{
+    padding: 12px;
+    
+    border-width: 0px;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background-color: rgb(78, 208, 241);
 }
 
 /* buttoncontainer */

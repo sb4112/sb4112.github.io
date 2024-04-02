@@ -31,7 +31,8 @@
             <ul class="navListe">
                 <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">About</a></li>
                 <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">Leaderboard</a></li>
-                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button
+                            id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
@@ -45,23 +46,37 @@
                 <div id="OptionCont"></div>
 
                 <div id="statsContainer">
-                    <div id="wrongAnswCont"><p id="wrongAnswers">Wrong answeres : 0</p></div>
-                    <div id="scoreCont"><p id="score">Current streak : 0</p></div>
-                    <div id="skipsCont"><p id="skips">Skips remaining : 3</p></div>
+                    <div id="wrongAnswCont">
+                        <p id="wrongAnswers">Wrong answeres : 0</p>
+                    </div>
+                    <div id="scoreCont">
+                        <p id="score">Current streak : 0</p>
+                    </div>
+                    <div id="skipsCont">
+                        <p id="skips">Skips remaining : 3</p>
+                    </div>
                 </div>
 
                 <div id="buttonContainer">
                     <select name="" id="catagory">
                         <option value="9" selected>General knowledge</option>
-                        <option value="10">Entertainment: Books</option>
-                        <option value="11">Entertainment: Movies</option>
-                        <option value="12">Entertainment: Music</option>
-                        <option value="17">Science & Nature</option>
-                        <option value="19">Science: Mathematics</option>
-                        <option value="21">Sports</option>
-                        <option value="22">Geography</option>
-                        <option value="23">History</option>
-                        <option value="27">Animals</option>
+                        <optgroup label="Entertainment">
+                            <option value="10">Books</option>
+                            <option value="11">Movies</option>
+                            <option value="12">Music</option>
+                            <option value="31">Anime</option>
+                        </optgroup>
+                        <optgroup label="Science">
+                            <option value="17">Nature</option>
+                            <option value="18">Computers</option>
+                            <option value="19">Mathematics</option>
+                        </optgroup>
+                        <optgroup label="Mixed">
+                            <option value="21">Sports</option>
+                            <option value="22">Geography</option>
+                            <option value="23">History</option>
+                            <option value="27">Animals</option>
+                        </optgroup>
                     </select>
 
                     <button id="checkAnswer">Answer</button>
