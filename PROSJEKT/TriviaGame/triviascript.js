@@ -15,117 +15,119 @@ let wrongAnswersEl = document.querySelector('#wrongAnswers')
 
 
 // Deklarer variabler 
-let correctAnswer
-let wrongAnswers
+let cAnswer
+let wAnswers
+let UserAnswer
+
+let Questions = []
+
+let currentQuestIndex = 0
+
 let refreshExist = false
+
 let answeredWrong = 0
 let skips = 3
 let score = 0
-let UserAnswer
 
 
-async function getQuestion() {
-    optionContainer.innerHTML = ``
-
-    /* For the skips functionality */
-    let radioEls = document.querySelectorAll('input[type="radio"]')
-    let checked = false
-    for (let s = 0; s < radioEls.length; s++) {
-        if (radioEls[s].checked) {
-            checked = true
-        }
-    }
-    if (refreshExist == false){
-        if (skips > 0){ 
-            if(checked == false && checkAnswerEl.style.display === "inline"){
-            skips -= 1;
-            skipsEl.innerHTML = `Skips remaining: ${skips}`;
-            }
-        }
-    }
-
-    if (skips === 0) {
-        nextQuestionEl.removeEventListener('click', getQuestion);
-    }
-    console.log(skips)
-
-     /* adds checkanswerbutton back into the buttoncontianer (display-none --> display-inline) ETTER SKIPS*/
-     buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
-     checkAnswerEl.style.display = "inline"
-  
+async function getQuestions() {
     /* Api reletaed stuff  */
     let category = Number(selectEl.value)
-    let url = `https://opentdb.com/api.php?amount=1&category=${category}`
+    let url = `https://opentdb.com/api.php?amount=20&category=${category}`
 
     let response = await fetch(url)
     console.log(response.status)
 
-    /* Error 429 (5) to many request fix (refresh button) */
-    if (response.status === 429) {
-
-        console.log("hello")
-        let refreshEl = document.createElement('button')
-        refreshEl.classList.add('refresh_429')
-        refreshEl.innerHTML = 'Error code : 429 - Refresh'
-
-        buttonContainerEl.removeChild(checkAnswerEl)
-        buttonContainerEl.removeChild(nextQuestionEl)
-        buttonContainerEl.removeChild(selectEl)
-
-        buttonContainerEl.appendChild(refreshEl)
-        buttonContainerEl.style.gridTemplateColumns = "1fr"
-
-        refreshEl.addEventListener('click', refresh)
-
-        refreshExist = true
-
-        return
-    }
     let data = await response.json()
-    let questionInfo = data.results[0]
-    correctAnswer = questionInfo.correct_answer
-    wrongAnswers = questionInfo.incorrect_answers
+    let options
 
-    console.log(questionInfo)
-
-    questionEl.innerText = `${(questionInfo.question)}`
-
-    /* options */
-    let options = [correctAnswer]
-
-    for (let i = 0; i < wrongAnswers.length; i++) {
-        options.push(wrongAnswers[i])
-    }
-
-    // Shuffler array med svaralternativer slik at riktig svar går frøst 
+    /* Shuffle options function */
     function shuffleOptions() {
-        for (let j = 0; j < options.length; j++) {
+        for (let i = 0; i < options.length; i++) {
             let rndmIndex = Math.floor(Math.random() * options.length)
-            let temp = options[j]
+            let temp = options[i]
 
-            options[j] = options[rndmIndex]
+            options[i] = options[rndmIndex]
             options[rndmIndex] = temp
         }
     }
-    shuffleOptions()
 
-    // Legge til svaralternativene i optionContainer
-    for (let t = 0; t < options.length; t++) {
-        let labelEl = document.createElement('label')
-        let radioEl = document.createElement('input')
+    /* Going trough the 20 fetched questions - making option array - shuffeling options - pushing the Question object into the array of questions */
+    for (let j = 0; j < data.results.length; j++) {
+        let questionsInfo = data.results[j]
+        cAnswer = questionsInfo.correct_answer
+        wAnswers = questionsInfo.incorrect_answers
 
-        radioEl.classList.add('radioBtns')
-        labelEl.classList.add('radioBtnsLabel')
+        options = [cAnswer]
 
-        radioEl.type = 'radio'
-        radioEl.name = `Options`
-        radioEl.value = options[t]
+        for (let s = 0; s < wAnswers.length; s++) {
+            options.push(wAnswers[s])
+        }
 
-        labelEl.appendChild(radioEl)
+        shuffleOptions()
 
-        labelEl.innerHTML += options[t]
+        let Question = {
+            Info: questionsInfo,
+            Options: options,
+            id: `Question[${j}]`
+        }
 
-        optionContainer.append(labelEl)
+        Questions.push(Question)
+    }
+    console.log(Questions)
+    nextQuestion()
+}
+
+/* Function Next question */
+function nextQuestion() {
+
+    console.log(skips)
+    if(skips <= 0 || checkAnswerEl.style.display == "inline"){
+        if(skips>=1){
+        skips-=1
+        skipsEl.innerHTML = `Skips remaining : ${skips}`
+        }
+
+        if(skips <= 0){
+            nextQuestionEl.removeEventListener('click', nextQuestion)
+        }
+           
+        
+    }
+    optionContainer.innerHTML = ``
+
+    buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
+    checkAnswerEl.style.display = "inline"
+
+    if (currentQuestIndex < (Questions.length - 1)) {
+        let questionTitle = Questions[currentQuestIndex].Info.question
+
+        questionEl.innerHTML = questionTitle
+
+        for (let t = 0; t < Questions[currentQuestIndex].Options.length; t++) {
+            let labelEl = document.createElement('label')
+            let radioEl = document.createElement('input')
+
+            radioEl.classList.add('radioBtns')
+            labelEl.classList.add('radioBtnsLabel')
+
+            radioEl.type = 'radio'
+            radioEl.name = 'Options'
+            radioEl.value = Questions[currentQuestIndex].Options[t]
+
+            labelEl.appendChild(radioEl)
+
+            labelEl.innerHTML += Questions[currentQuestIndex].Options[t]
+
+            optionContainer.append(labelEl)
+        }
+        currentQuestIndex += 1
+    }
+    else if(currentQuestIndex >= (Questions.length -1)){
+        currentQuestIndex = 0
+        Questions.splice(0, Questions.length)
+        getQuestions()
+        nextQuestion()
     }
 }
 
@@ -134,25 +136,55 @@ function checkAnswer() {
     let radioEls = document.querySelectorAll('input[type="radio"]')
     let checked = false
 
+    let correctAnswer = Questions[currentQuestIndex - 1].Info.correct_answer
+
+    console.log(correctAnswer)
+
+
+
     for (let s = 0; s < radioEls.length; s++) {
         if (radioEls[s].checked) {
             UserAnswer = radioEls[s].value
             checked = true
+
+            console.log(UserAnswer)
         }
     }
-    if (checked) {
-        nextQuestionEl.addEventListener('click', getQuestion)
+
+    if(checked == true){
+        nextQuestionEl.addEventListener('click', nextQuestion)
     }
+
     else if (checked == false) {
         scoreEl.innerHTML = "Please select one of the boxes"
         return
     }
     if (UserAnswer == correctAnswer) {
         score += 1
+        let labels = document.querySelectorAll('label')
+
+        for (let i = 0; i < labels.length; i++) {
+            if (labels[i].textContent === correctAnswer) {
+                labels[i].style.backgroundColor = "lightgreen"
+            }
+        }
         scoreEl.innerHTML = `Du har ${score} riktige svar på rad!`
     }
     else if (UserAnswer != correctAnswer) {
         answeredWrong += 1
+
+        let labels = document.querySelectorAll('label')
+
+        for (let i = 0; i < labels.length; i++) {
+            if (labels[i].textContent === correctAnswer) {
+                labels[i].style.backgroundColor = "lightgreen"
+            }
+            if (radioEls[i].value === UserAnswer) {
+                radioEls[i].parentElement.style.backgroundColor = "lightcoral"
+            }
+        }
+
+
         wrongAnswersEl.innerHTML = `Wrong Answers : ${answeredWrong}`
     }
 
@@ -191,6 +223,13 @@ function restartGame() {
     wrongAnswersEl.innerHTML = "Wrong answers : 0"
     skipsEl.innerHTML = "Skips remaining : 3"
 
+    let labels = document.querySelectorAll('label')
+
+    for(let i = 0; i<labels.length; i++){
+        labels[i].style.backgroundColor = "white"
+    }
+
+
     let restartBtn = document.querySelector('.restartBtn')
     buttonContainerEl.removeChild(restartBtn)
 
@@ -201,7 +240,7 @@ function restartGame() {
 
     buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
 
-    getQuestion()
+    nextQuestion()
 }
 
 /* refresh function (429) */
@@ -222,6 +261,8 @@ function refresh() {
     refreshExist = false
 }
 
-getQuestion()
+/* getQuestion() */
 checkAnswerEl.addEventListener('click', checkAnswer)
-nextQuestionEl.addEventListener('click', getQuestion)
+nextQuestionEl.addEventListener('click', nextQuestion)
+
+getQuestions()
