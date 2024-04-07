@@ -12,6 +12,10 @@ let nextQuestionEl = document.querySelector('#nextQuestion')
 let buttonContainerEl = document.querySelector('#buttonContainer')
 let skipsEl = document.querySelector('#skips')
 let wrongAnswersEl = document.querySelector('#wrongAnswers')
+let statsContainer = document.querySelector('#statsContainer')
+let scoreCont = document.querySelector('#scoreCont')
+let skipsCont = document.querySelector('#skipsCont')
+let wrongAnswCont = document.querySelector('#wrongAnswCont')
 
 
 // Deklarer variabler 
@@ -24,22 +28,30 @@ let Questions = []
 let currentQuestIndex = 0
 
 let refreshExist = false
+let fetching = false
 
 let answeredWrong = 0
 let skips = 3
 let score = 0
 
-
 async function getQuestions() {
+    if(score != 0 || answeredWrong != 0 || skips != 3){
+        fetching = true
+    }
     /* Api reletaed stuff  */
     let category = Number(selectEl.value)
-    let url = `https://opentdb.com/api.php?amount=20&category=${category}`
+    let url = `https://opentdb.com/api.php?amount=5&category=${category}`
 
     let response = await fetch(url)
     console.log(response.status)
 
     let data = await response.json()
     let options
+
+    console.log(data.results[0])
+
+    let currentCategory = document.getElementById('currentCatagory')
+    currentCategory.innerHTML = `Current category - ${(data.results[0].category)}`
 
     /* Shuffle options function */
     function shuffleOptions() {
@@ -100,6 +112,7 @@ function nextQuestion() {
     checkAnswerEl.style.display = "inline"
 
     if (currentQuestIndex < (Questions.length - 1)) {
+        fetching = false
         let questionTitle = Questions[currentQuestIndex].Info.question
 
         questionEl.innerHTML = questionTitle
@@ -125,9 +138,11 @@ function nextQuestion() {
     }
     else if(currentQuestIndex >= (Questions.length -1)){
         currentQuestIndex = 0
-        Questions.splice(0, Questions.length)
-        getQuestions()
-        nextQuestion()
+        Questions = []
+        if (fetching == false){
+            getQuestions()
+            nextQuestion()
+        }
     }
 }
 
@@ -204,6 +219,12 @@ function checkAnswer() {
         buttonContainerEl.appendChild(restartEl)
         buttonContainerEl.style.gridTemplateColumns = "1fr"
 
+
+        statsContainer.innerHTML = `Your score : ${score} `
+        statsContainer.style.gridTemplateColumns = "1fr"
+        statsContainer.style.textAlign = "center"
+        statsContainer.style.fontWeight = "bold"
+
         return
     }
 
@@ -218,8 +239,14 @@ function restartGame() {
     skips = 4
     answeredWrong = 0
 
+    statsContainer.innerHTML = ''
+    statsContainer.style.gridTemplateColumns = "1fr 1fr 1fr"
+    statsContainer.style.fontWeight = "normal"
+    statsContainer.appendChild(wrongAnswCont)
+    statsContainer.appendChild(scoreCont)
+    statsContainer.appendChild(skipsCont)
 
-    scoreEl.innerHTML = "Current streak : 0"
+    scoreEl.innerHTML = "Current score : 0"
     wrongAnswersEl.innerHTML = "Wrong answers : 0"
     skipsEl.innerHTML = "Skips remaining : 3"
 
@@ -243,10 +270,8 @@ function restartGame() {
     nextQuestion()
 }
 
-/* refresh function (429) */
+/* refresh function (429)
 function refresh() {
-    getQuestion()
-
     let refreshBtn = document.querySelector('.refresh_429')
 
     buttonContainerEl.removeChild(refreshBtn)
@@ -259,9 +284,9 @@ function refresh() {
     buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
 
     refreshExist = false
-}
+} */
 
-/* getQuestion() */
+
 checkAnswerEl.addEventListener('click', checkAnswer)
 nextQuestionEl.addEventListener('click', nextQuestion)
 
