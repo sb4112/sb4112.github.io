@@ -34,7 +34,7 @@ main{
 /* Main */
 /* Headline */
 h1, p{
-    font-family: "DePixel", sans-serif;
+    font-family: "VT323", monospace;
 }
 
 
@@ -59,6 +59,8 @@ h1, p{
 
     padding: 20px;
     border-radius: 12px;
+
+    font-size: 20px;
 }
 
 /* Main */

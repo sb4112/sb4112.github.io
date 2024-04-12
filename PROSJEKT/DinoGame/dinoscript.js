@@ -1,3 +1,5 @@
+export { DinoScoreArray }
+
 //Henter objekter fra DOM
 let boardEl = document.querySelector('#spillbrett')
 let restartCont = document.querySelector('#restartCont')
@@ -5,11 +7,29 @@ let gameOverCont = document.querySelector('#gameOver')
 let scoreEl = document.querySelector('p')
 let scoreContainer = document.querySelector('#scoreCont')
 
+
+// Score
+let DinoScoreArray = []
+
+let StoredDinoScoreArray = localStorage.getItem('DinoScoreArray')
+if (StoredDinoScoreArray) {
+    DinoScoreArray = JSON.parse(StoredDinoScoreArray)
+    console.log(`Score Array : ${DinoScoreArray}`)
+}
+
+console.log(DinoScoreArray)
+
+
+
 // Objekter - alt som skal tegnes på canvas
 // board
-let board = {
+/* let board = {
     width: 750,
     height: 300,
+} */
+let board = {
+    width: window.innerWidth - 100,
+    height: 300
 }
 
 // dino
@@ -76,10 +96,12 @@ let velocityX = -3.8
 let velocityY = 0
 let gravity = 0.272
 
+
 // Variabler
 let gameOver = false
-let started = false
+let ScoreIsSet = false 
 let score = 0
+let timeForTrack = (board.width / velocityX) * -10
 
 
 
@@ -87,12 +109,12 @@ let score = 0
 let dinoXspawn = 50
 let dinoYspawn = board.height - dino.height
 
-let obstacleXspawn = 700
+let obstacleXspawn = board.width
 let cactusYspawn = board.height - cactusheight
 let HighbirdYspawn = board.height - (cactusheight + bird.height + 10)
 let LowbirdYspawn = board.height - (90)
 
-let cloudXspawn = 700
+let cloudXspawn = board.width
 
 let trackXspawn = board.width
 let trackYspawn = board.height - track.height
@@ -134,6 +156,8 @@ let trackImg = new Image()
 trackImg.src = track.img
 
 
+
+
 document.addEventListener('keydown', dinoJump)
 
 let intervalID = setInterval(update, 10.00)
@@ -144,6 +168,8 @@ let trackSpawnTime = performance.now()
 
 function update() {
     if (gameOver) {
+        clearInterval(intervalID)
+
         gameOverCont.style.visibility = 'visible'
         scoreContainer.style.visibility = 'visible'
 
@@ -151,6 +177,7 @@ function update() {
             clearInterval(intervalID)
             cloudArray.splice(0, cloudArray.length)
             obstacleArray.splice(0, obstacleArray.length)
+            ScoreIsSet = false
             score = 0
 
 
@@ -170,6 +197,9 @@ function update() {
         })
 
         scoreEl.innerHTML = `New score : ${score}`
+
+        ScoreTraverser()
+        console.log(DinoScoreArray)
         return
     }
     else {
@@ -194,7 +224,6 @@ function update() {
 
     let timeSinceLastObstacleSpawn = currentTime - obstacleSpawnTime
     let timeSinceLastCloudSpawn = currentTime - cloudSpawnTime
-    let timesinceLastTrackSpawn = currentTime - trackSpawnTime
 
     if (timeSinceLastCloudSpawn >= 2500) {
         placeCloud()
@@ -204,16 +233,19 @@ function update() {
         placeObstacle()
         obstacleSpawnTime = currentTime
     }
-    if (timesinceLastTrackSpawn >= 1843) {
-        placeTrack()
-        trackSpawnTime = currentTime
-    }
-    if (currentTime > 5000){
-        started = true
+
+
+    trackSpawnTime = currentTime
+    if (trackArray.length === 0 || trackArray[trackArray.length - 1].x <= 1.1) {
+        placeTrack();
     }
 
 
     ctx.clearRect(0, 0, board.width, board.height)
+
+    if (trackSpawnTime <= timeForTrack) {
+        ctx.drawImage(trackImg, 0, trackYspawn, track.width, track.height)
+    }
 
 
     //cloud
@@ -231,9 +263,6 @@ function update() {
         Track.x += velocityX
         ctx.drawImage(trackImg, Track.x, Track.y, Track.width, Track.height)
     }
-    if (!started) {
-        ctx.drawImage(trackImg, 0, trackYspawn, track.width, track.height)
-    }
     //dino
     velocityY += gravity
 
@@ -250,6 +279,7 @@ function update() {
         if (detectCollision(obstacle)) {
             if (dino.ducking) {
                 ctx.clearRect(0, 0, (dinoXspawn + dino.width), board.height)
+                ctx.drawImage(trackImg, 0, trackYspawn, track.width, track.height)
             }
             gameOver = true
             dinoImg.src = "dinoBilder/dino-dead.png"
@@ -260,7 +290,7 @@ function update() {
     }
 
     ctx.fillStyle = "black"
-    ctx.font = "16px DePixel"
+    ctx.font = "24px VT323"
     score += 1
     ctx.fillText(score, 5, 20)
 
@@ -302,6 +332,7 @@ function placeTrack() {
 
     if (trackArray.length > 3) {
         trackArray.shift()
+
     }
 }
 
@@ -328,7 +359,7 @@ function placeCloud() {
         cloudArray.push(Cloud)
     }
 
-    if (cloudArray.length > 7) {
+    if (cloudArray.length > 15) {
         cloudArray.shift()
     }
 }
@@ -379,7 +410,7 @@ function placeObstacle() {
         obstacle.y = HighbirdYspawn
         obstacleArray.push(obstacle)
     }
-    if (obstacleArray.length > 7) {
+    if (obstacleArray.length > 14) {
         obstacleArray.shift()
     }
 }
@@ -391,4 +422,34 @@ function detectCollision(obstacle) {
         dinoXspawn + dino.width > obstacle.x &&
         dinoYspawn < obstacle.y + obstacle.height &&
         dinoYspawn + dino.height > obstacle.y
+}
+
+function ScoreTraverser() {
+    if (DinoScoreArray.length < 5) {
+        if (!ScoreIsSet) {
+            DinoScoreArray.push(score)
+            ScoreIsSet = true
+        }
+    }
+    else if (DinoScoreArray.length == 5) {
+        if (score > DinoScoreArray[4]) {
+            if (!ScoreIsSet){
+                DinoScoreArray.unshift(score)
+                ScoreIsSet = true 
+            }
+        }
+    }
+
+    DinoScoreArray.sort(function (a, b) {
+        return b - a
+    })
+
+    while (DinoScoreArray.length > 5) {
+        DinoScoreArray.pop()
+    }
+
+
+    localStorage.setItem('DinoScoreArray', JSON.stringify(DinoScoreArray))
+    console.log(DinoScoreArray)
+
 }

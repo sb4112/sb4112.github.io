@@ -1,6 +1,7 @@
+export { TriviaScoreArray } 
+
 // For special caracters 
 /* Spør didrik neste time */
-
 
 // Henter objekter fra DOM
 let questionEl = document.querySelector('#question')
@@ -16,6 +17,9 @@ let statsContainer = document.querySelector('#statsContainer')
 let scoreCont = document.querySelector('#scoreCont')
 let skipsCont = document.querySelector('#skipsCont')
 let wrongAnswCont = document.querySelector('#wrongAnswCont')
+let currentCategory = document.querySelector('#currentCatagory')
+
+
 
 
 // Deklarer variabler 
@@ -24,18 +28,28 @@ let wAnswers
 let UserAnswer
 
 let Questions = []
+let TriviaScoreArray = []
 
 let currentQuestIndex = 0
 
-let refreshExist = false
-let fetching = false
+/* let refreshExist = false */
+let fetching
 
 let answeredWrong = 0
 let skips = 3
 let score = 0
 
+// Henter objekter fra Local Storage 
+let StoredTriviaScoreArray = localStorage.getItem('TriviaScoreArray')
+if (StoredTriviaScoreArray) {
+    TriviaScoreArray = JSON.parse(StoredTriviaScoreArray)
+    console.log(`Score Array : ${TriviaScoreArray}`)
+}
+
+
+// Get questions (5)
 async function getQuestions() {
-    if(score != 0 || answeredWrong != 0 || skips != 3){
+    if (score != 0 || answeredWrong != 0 || skips != 3) {
         fetching = true
     }
     /* Api reletaed stuff  */
@@ -50,7 +64,6 @@ async function getQuestions() {
 
     console.log(data.results[0])
 
-    let currentCategory = document.getElementById('currentCatagory')
     currentCategory.innerHTML = `Current category - ${(data.results[0].category)}`
 
     /* Shuffle options function */
@@ -94,17 +107,17 @@ async function getQuestions() {
 function nextQuestion() {
 
     console.log(skips)
-    if(skips <= 0 || checkAnswerEl.style.display == "inline"){
-        if(skips>=1){
-        skips-=1
-        skipsEl.innerHTML = `Skips remaining : ${skips}`
+    if (skips <= 0 || checkAnswerEl.style.display == "inline") {
+        if (skips >= 1) {
+            skips -= 1
+            skipsEl.innerHTML = `Skips remaining : ${skips}`
         }
 
-        if(skips <= 0){
+        if (skips <= 0) {
             nextQuestionEl.removeEventListener('click', nextQuestion)
         }
-           
-        
+
+
     }
     optionContainer.innerHTML = ``
 
@@ -136,10 +149,10 @@ function nextQuestion() {
         }
         currentQuestIndex += 1
     }
-    else if(currentQuestIndex >= (Questions.length -1)){
+    else if (currentQuestIndex >= (Questions.length - 1)) {
         currentQuestIndex = 0
         Questions = []
-        if (fetching == false){
+        if (fetching == false) {
             getQuestions()
             nextQuestion()
         }
@@ -166,7 +179,7 @@ function checkAnswer() {
         }
     }
 
-    if(checked == true){
+    if (checked == true) {
         nextQuestionEl.addEventListener('click', nextQuestion)
     }
 
@@ -183,7 +196,7 @@ function checkAnswer() {
                 labels[i].style.backgroundColor = "lightgreen"
             }
         }
-        scoreEl.innerHTML = `Du har ${score} riktige svar på rad!`
+        scoreEl.innerHTML = `Current score :  ${score}`
     }
     else if (UserAnswer != correctAnswer) {
         answeredWrong += 1
@@ -220,10 +233,12 @@ function checkAnswer() {
         buttonContainerEl.style.gridTemplateColumns = "1fr"
 
 
-        statsContainer.innerHTML = `Your score : ${score} `
+        statsContainer.innerHTML = `Final score : ${score} `
         statsContainer.style.gridTemplateColumns = "1fr"
         statsContainer.style.textAlign = "center"
         statsContainer.style.fontWeight = "bold"
+
+        ScoreTraverser()
 
         return
     }
@@ -252,7 +267,7 @@ function restartGame() {
 
     let labels = document.querySelectorAll('label')
 
-    for(let i = 0; i<labels.length; i++){
+    for (let i = 0; i < labels.length; i++) {
         labels[i].style.backgroundColor = "white"
     }
 
@@ -270,6 +285,29 @@ function restartGame() {
     nextQuestion()
 }
 
+function ScoreTraverser() {
+    if (TriviaScoreArray.length < 5) {
+        TriviaScoreArray.push(score)
+    }
+    else if (TriviaScoreArray.length == 5) {
+            if (score > TriviaScoreArray[4]) {
+                TriviaScoreArray.unshift(score)
+            }
+        }
+
+    TriviaScoreArray.sort(function (a, b) {
+        return b - a
+    })
+
+    while (TriviaScoreArray.length > 5){
+        TriviaScoreArray.pop()
+    }
+
+
+    localStorage.setItem('TriviaScoreArray', JSON.stringify(TriviaScoreArray))
+    console.log(TriviaScoreArray)
+
+}
 /* refresh function (429)
 function refresh() {
     let refreshBtn = document.querySelector('.refresh_429')
