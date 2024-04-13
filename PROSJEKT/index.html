@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
 
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+    <!-- Henter font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fellesstyle.css">
@@ -16,12 +17,18 @@
     <header>
         <ul class="navListe">
             <li><a href="/PROSJEKT/index.html" id="index" class="navlinks">Home</a></li>
+
+            <li>
+                <i class="fa-solid fa-bars"></i>
+            </li>
         </ul>
+
         <nav>
-            <ul class="navListe">
+            <ul class="navListe" id="mainLinks">
                 <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">About</a></li>
                 <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">Leaderboard</a></li>
-                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button
+                            id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +42,7 @@
     </main>
 
 
+    <script src="fellesscript.js" type="module"></script>
     <script src="script.js" type="module"></script>
 </body>
 

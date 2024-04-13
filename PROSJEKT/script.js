@@ -7,21 +7,6 @@ let dinoEl = {
     link: "DinoGame/dino.html",
     bgBilde: "bilder/Dino.png" 
 }
-let snakeEl = {
-    navn: "Snake",
-    link: "SnakeGame/snake.html",
-    bgBilde: "bilder/Snake.png"
-}
-let memoryEl = {
-    navn: "Memory",
-    link: "MemoryGame/memory.html",
-    bgBilde: "bilder/Memory.png"
-}
-let pingpongEl = {
-    navn: "PingPong",
-    link: "PingPongGame/pingpong.html",
-    bgBilde: "bilder/PingPong.png"
-}
 let triviaEl = {
     navn: "Trivia",
     link: "TriviaGame/trivia.html",
@@ -30,7 +15,7 @@ let triviaEl = {
 
 
 // Spillene; array
-let spill = [dinoEl, snakeEl, memoryEl, pingpongEl, triviaEl]
+let spill = [dinoEl, triviaEl]
 
 
 // Fyll spillcontainer

@@ -1,0 +1,138 @@
+/* Body */
+body{
+    background-color: aliceblue;
+}
+
+
+/* GamesContainer */
+.gamesContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 20px;
+    padding: 14px;
+
+    font-family:  "Montserrat", sans-serif;
+
+    background-color: white;
+
+    border-radius: 12px;
+}
+
+/* Headlines */
+.headlineContainer, .lHeadCont{
+    display:flex;
+    justify-content: center;
+}
+.headline{
+    font-size: 24;
+}
+.subHead{
+    font-weight: 600;
+    font-size: 14;
+}
+
+/* AboutContainer */
+.aboutContainer{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    display: flex;;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InfoImgCont{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-top: 1px solid rgba(171, 156, 156, 0.6);
+    border-bottom: 1px solid rgba(171, 156, 156, 0.6);
+}
+.infoContainer{
+    display:flex;
+    align-items: center;
+}
+
+.imgContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.imgSlider{
+    width: 550px;
+    height: 300px;
+
+    font-size: 14px;
+    font-style: italic;
+}
+.imageArrows{
+    position: absolute;
+
+    display:flex;
+    justify-content: space-between;
+
+    width: 450px;
+}
+.fa-solid{
+    font-size: 24px;
+}
+.images{
+    width:100%;
+    height: 80%;
+}
+
+.gameLinkCont{
+    display: flex;
+    justify-content: center;
+
+    margin: 32px;
+
+    background-color: rgb(0, 136, 169, 1);
+    border: none;
+    border-radius:14px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+
+    width: 70%;
+}
+.gamelink{
+    text-align: center;
+
+    padding: 10px 50px;
+    width: 100%;
+    height: 100%;
+
+    text-decoration: none;
+    color:white;
+}
+
+
+
+
+/* leaderboardContainer */
+.leaderboardContainer{
+    width: 80%;
+    background-color: rgb(230, 230, 230);
+
+    border-radius: 8px;
+
+    padding: 12px;
+}
+.scoreContainer{
+    display:grid; 
+    grid-template-columns: 1fr 3fr;
+
+    border-bottom: 1px solid rgba(171, 156, 156, 0.6);
+    padding: 8px;
+}
+
+
+
