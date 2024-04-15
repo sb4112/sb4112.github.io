@@ -100,7 +100,7 @@ function setGameContainers() {
         imgSlider: dinoImgs,
         imgFooter: DinoGameFooter,
         imgSliderIndex: 0,
-        gameLink: '/PROSJEKT/DinoGame/dino.html',
+        gameLink: '../DinoGame/dino.html',
         leaderboard : DinoScoreArray,
         suffix : ' pts'
     }
@@ -112,7 +112,7 @@ function setGameContainers() {
         imgSlider: triviaImgs,
         imgFooter: TriviaGameFooter,
         imgSliderIndex: 0,
-        gameLink: '/PROSJEKT/TriviaGame/trivia.html',
+        gameLink: '../TriviaGame/trivia.html',
         leaderboard : TriviaScoreArray,
         suffix : 'correct in a row'
     }

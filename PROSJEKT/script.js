@@ -12,7 +12,7 @@ let dinoEl = {
 let triviaEl = {
     navn: "Trivia",
     link: "TriviaGame/trivia.html",
-    bgBilde: "bilder/Trivia.jpg"
+    bgBilde: "bilder/TriviaBg.png",
 }
 
 
