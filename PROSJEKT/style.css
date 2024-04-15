@@ -1,38 +1,35 @@
 /* Body */
 body{
-    background-image: url(bilder/Bakgrunn_landingPage.jpg);
+    background-color:aliceblue;
+    font-family: "Montserrat", sans-serif;
 }
 
 /* Main */
 main{
+    background-color: white;
+
+    border-radius: 12px;
+
     display: flex;
     flex-direction: column;
-
     align-items: center;
+
+    margin: 12px;
 }
 /* Main */
 /* Overskrift */
 #overskrift{
-    background-color: rgb(89, 87, 69);
-
-    margin: 70px 5%;
-    padding: 20px 0;
-
     width: 80%;
-}
-#overskrift > h1{
-    font-family: "rowdies", sans-serif;
+    display:flex;
+    justify-content: center;
 }
 
 /* Main */
 /* Spill-container */
 #spillContainer{
     display: flex;
-    justify-content: space-around ;
+    justify-content: space-around;
     flex-wrap: wrap;
-
-    border: solid 4px #24252a;
-    border-radius: 12px;
 
     height: 80%;
     width: 80%;

@@ -14,10 +14,8 @@ let DinoScoreArray = []
 let StoredDinoScoreArray = localStorage.getItem('DinoScoreArray')
 if (StoredDinoScoreArray) {
     DinoScoreArray = JSON.parse(StoredDinoScoreArray)
-    console.log(`Score Array : ${DinoScoreArray}`)
 }
 
-console.log(DinoScoreArray)
 
 
 
@@ -119,13 +117,11 @@ let cloudXspawn = board.width
 let trackXspawn = board.width
 let trackYspawn = board.height - track.height
 
-
+if(boardEl){
 // Setter spillbrettets høyde og bredde
 boardEl.height = board.height
 boardEl.width = board.width
 
-// Siste gang cactus ble spawna
-let lastCactusSpawnTime = 0
 
 // forkortelse for tegning senere
 let ctx = boardEl.getContext("2d")
@@ -199,7 +195,6 @@ function update() {
         scoreEl.innerHTML = `New score : ${score}`
 
         ScoreTraverser()
-        console.log(DinoScoreArray)
         return
     }
     else {
@@ -452,4 +447,5 @@ function ScoreTraverser() {
     localStorage.setItem('DinoScoreArray', JSON.stringify(DinoScoreArray))
     console.log(DinoScoreArray)
 
+}
 }

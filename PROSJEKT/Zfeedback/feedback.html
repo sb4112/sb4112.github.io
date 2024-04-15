@@ -24,12 +24,74 @@
         </ul>
         <nav>
             <ul class="navListe" id="mainLinks">
-                <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">About</a></li>
-                <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">Leaderboard</a></li>
-                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zsources/sources.html">Sources</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zleaderboard/leaderboard.html">About</a></li>
+                <li><a class="navlinks" href="/PROSJEKT/Zfeedback/feedback.html" target="_blank"><button id="tilbakemelding">Feedback</button></a></li>
             </ul>
         </nav>
     </header>
+
+    <main>
+        <div id="feedbackContainer">
+            <h2>Feedback</h2>
+
+            <form action="">
+                <div id="MostLiked" class="formContainer">
+                    <h4>Which game did you like the most?</h4>
+                    <label>
+                        <input type="radio" name="g1"> Trivia-Game
+                    </label>
+                    <label>
+                        <input type="radio" name="g1"> Dino-Game
+                    </label>
+                </div>
+
+                <div class="formContainer">
+                    <h4>What did you like about the games</h4>
+                    <textarea id="WhyLiked" placeholder="I liked..."></textarea>
+                </div>
+
+                <div class="formContainer">
+                    <h4>Rate the trivia-game on a scale from 1-10</h4>
+                    <select id="TriviaRating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                
+                <div class="formContainer">
+                    <h4>Rate the dino-game on a scale from 1-10</h4>
+                    <select id="DinoRating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+
+                <div id="other" class="formContainer">
+                    <h4>Anything else?</h4>
+                    <textarea placeholder="Anything else"></textarea>
+                </div>
+
+                <div id="submitCont"><button id="submit">Sumbit</button></div>
+            </form>
+        </div>
+    </main>
 
     <script src="/PROSJEKT/fellesscript.js" type="module"></script>
 </body>

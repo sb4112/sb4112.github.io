@@ -1,39 +1,45 @@
 // Importerer objekter fra andre filer 
-/* import {TriviaScoreArray} from "/PROSJEKT/TriviaGame/triviascript.js"
-import {DinoScoreArray} from "/PROSJEKT/DinoGame/dinoscript.js" */
+import { DinoScoreArray } from "../DinoGame/dinoscript.js"
+import { TriviaScoreArray } from "../TriviaGame/triviascript.js"
 
+console.log(TriviaScoreArray)
+console.log(DinoScoreArray)
 
 // Henter objekter fra DOM
 let mainEl = document.querySelector('main')
-let TriviaRight
-let TriviaLeft
-let DinoRight
-let DinoLeft
 
 // Images
 let DinoStart = new Image()
 DinoStart.src = "gamepictures/DinoStart.png"
+DinoStart.alt = "Start pf game"
 
 let DinoJump = new Image()
 DinoJump.src = "gamepictures/DinoJump.png"
+DinoJump.alt = "Dino Jumping"
 
 let DinoDuck = new Image()
 DinoDuck.src = "gamepictures/DinoDuck.png"
+DinoDuck.alt = "Dino Ducking"
 
 let DinoDead = new Image()
 DinoDead.src = "gamepictures/DinoDead.png"
+DinoDead.alt = "Dino dead - game over"
 
 let TriviaStart = new Image()
 TriviaStart.src = "gamepictures/TriviaStart.png"
+TriviaStart.alt = "Start of game"
 
 let TriviaCatagory = new Image()
 TriviaCatagory.src = "gamepictures/TriviaCatagory.png"
+TriviaCatagory.alt = "Pick category"
 
 let TriviaSkip = new Image()
 TriviaSkip.src = "gamepictures/TriviaSkip.png"
+TriviaSkip.alt = "Skip questions"
 
 let TriviaEnd = new Image()
 TriviaEnd.src = "gamepictures/TriviaEnd.png"
+TriviaEnd.alt = "Three answers wrong, game over."
 
 // Footers 
 let DinoStartFoot = "The game starts as soon as you load the page. Be ready for coming obstacles!"
@@ -90,23 +96,25 @@ function setGameContainers() {
     dinoGame = {
         class: "DinoGame",
         name: "Dino-game",
-        info: "Dino-Game er et enkelt, men vanedannende nettleserspill som opprinnelig ble introdusert som en påminnelse om manglende internettilkobling i Google Chrome-nettleseren. Spillet dukker opp når brukere prøver å åpne en nettside uten tilkobling, og spilleren styrer en dinosaur som må hoppe over hindringer for å overleve. Med minimalistisk design og enkel spillmekanikk har Dino-Game blitt populært blant brukere som søker en rask og morsom tidsfordriv.",
+        info: "Dino Game is a classic browser-based game originally introduced as a quirky feature in Google Chrome, appearing when users encountered connection issues. In this game, players navigate their dinosaur character through obstacles by utilizing keyboard controls: jump over hurdles by pressing the spacebar or the arrow-up key and duck under obstacles by pressing the arrow-down key. By staying alive your score increases; try to get a new highscore!",
         imgSlider: dinoImgs,
         imgFooter: DinoGameFooter,
         imgSliderIndex: 0,
         gameLink: '/PROSJEKT/DinoGame/dino.html',
-        /* leaderboard : DinoScoreArray */
+        leaderboard : DinoScoreArray,
+        suffix : ' pts'
     }
 
     triviaGame = {
         class: "TriviaGame",
         name: "Trivia-game",
-        info: "Dino-Game er et enkelt, men vanedannende nettleserspill som opprinnelig ble introdusert som en påminnelse om manglende internettilkobling i Google Chrome-nettleseren. Spillet dukker opp når brukere prøver å åpne en nettside uten tilkobling, og spilleren styrer en dinosaur som må hoppe over hindringer for å overleve. Med minimalistisk design og enkel spillmekanikk har Dino-Game blitt populært blant brukere som søker en rask og morsom tidsfordriv.",
+        info: "Welcome to our trivia game adventure! Here, it's not just about answering questions—it's a journey through different categories, testing your knowledge at every turn. As you navigate through, you'll face a variety of challenges, each one requiring quick thinking and a keen eye for detail. But don't worry, if you find yourself stumped, you've got a few skips up your sleeve to keep the game going. Just remember, make too many wrong moves, and it's game over. So, gear up, aim high, and let's see how far you can go in mastering the trivia realm!",
         imgSlider: triviaImgs,
         imgFooter: TriviaGameFooter,
         imgSliderIndex: 0,
         gameLink: '/PROSJEKT/TriviaGame/trivia.html',
-        /* leaderboard : TriviaScoreArray */
+        leaderboard : TriviaScoreArray,
+        suffix : 'correct in a row'
     }
 
     // Array av spillene 
@@ -166,6 +174,7 @@ function setGameContainers() {
             nrEl.classList.add('nr')
             let scoreEl = document.createElement('div')
             scoreEl.classList.add('score')
+            scoreEl.innerHTML = `${games[i].leaderboard[j]} ${games[i].suffix}`
 
             leaderboardCont.appendChild(scoreContainer)
             scoreContainer.appendChild(nrEl)
@@ -298,7 +307,6 @@ function setGameContainers() {
 }
 
 function imageSlider(){
-
     let dinoImgSlider = document.querySelector('.Dino-gameSlider')
     dinoImgSlider.innerHTML = ''
 

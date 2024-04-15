@@ -1,3 +1,5 @@
+
+
 // Henter elementer fra DOM
 const spillContainer = document.querySelector('#spillContainer')
 

@@ -1,0 +1,48 @@
+
+
+/* Main */
+main{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+
+    font-family:  "Montserrat", sans-serif;
+}
+
+#feedbackContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 12px;
+
+    padding: 40px;
+    margin: 20px;
+
+    width: 80%;
+}
+.formContainer{
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    margin: 30px;
+}
+#submitCont{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 30px;
+}
+#submit{
+    padding: 10px 30px;
+    background-color: rgb(0, 136, 169, 1);
+    border: none;
+    border-radius:14px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+#submit:hover{
+    background-color: rgb(0, 136, 169, 0.8);
+}

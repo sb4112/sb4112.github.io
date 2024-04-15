@@ -43,7 +43,6 @@ let score = 0
 let StoredTriviaScoreArray = localStorage.getItem('TriviaScoreArray')
 if (StoredTriviaScoreArray) {
     TriviaScoreArray = JSON.parse(StoredTriviaScoreArray)
-    console.log(`Score Array : ${TriviaScoreArray}`)
 }
 
 
@@ -188,7 +187,7 @@ function checkAnswer() {
         return
     }
     if (UserAnswer == correctAnswer) {
-        score += 1
+        score += 10
         let labels = document.querySelectorAll('label')
 
         for (let i = 0; i < labels.length; i++) {
@@ -325,7 +324,10 @@ function refresh() {
 } */
 
 
-checkAnswerEl.addEventListener('click', checkAnswer)
-nextQuestionEl.addEventListener('click', nextQuestion)
 
-getQuestions()
+if(nextQuestionEl){
+    checkAnswerEl.addEventListener('click', checkAnswer)
+    nextQuestionEl.addEventListener('click', nextQuestion)
+
+    getQuestions()
+}

@@ -1,19 +1,19 @@
 /* Body */
-body{
+body {
     background-color: aliceblue;
+    font-family: "Montserrat", sans-serif;
 }
 
 
 /* GamesContainer */
-.gamesContainer{
-    display:flex;
+.gamesContainer {
+    display: flex;
     flex-direction: column;
     align-items: center;
 
     margin: 20px;
+    margin-bottom: 40px;
     padding: 14px;
-
-    font-family:  "Montserrat", sans-serif;
 
     background-color: white;
 
@@ -21,31 +21,35 @@ body{
 }
 
 /* Headlines */
-.headlineContainer, .lHeadCont{
-    display:flex;
+.headlineContainer,
+.lHeadCont {
+    display: flex;
     justify-content: center;
 }
-.headline{
+
+.headline {
     font-size: 24;
 }
-.subHead{
+
+.subHead {
     font-weight: 600;
     font-size: 14;
 }
 
 /* AboutContainer */
-.aboutContainer{
+.aboutContainer {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
 
-    display: flex;;
+    display: flex;
+    ;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.InfoImgCont{
+.InfoImgCont {
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -53,41 +57,50 @@ body{
     border-top: 1px solid rgba(171, 156, 156, 0.6);
     border-bottom: 1px solid rgba(171, 156, 156, 0.6);
 }
-.infoContainer{
-    display:flex;
+
+.infoContainer {
+    display: flex;
     align-items: center;
+    padding-right: 4px;
+
+    line-height: 170%;
 }
 
-.imgContainer{
-    display:flex;
+.imgContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 4px;
 
 }
-.imgSlider{
-    width: 550px;
-    height: 300px;
+
+.imgSlider {
+    width: 100%;
 
     font-size: 14px;
     font-style: italic;
 }
-.imageArrows{
+
+.imageArrows {
     position: absolute;
 
-    display:flex;
-    justify-content: space-between;
+    width: 75%;
 
-    width: 450px;
+    display: flex;
+    justify-content: space-between;
 }
-.fa-solid{
+
+.fa-circle-chevron-right, .fa-circle-chevron-left{
     font-size: 24px;
 }
-.images{
-    width:100%;
-    height: 80%;
+
+.images {
+    width: 100%;
 }
 
-.gameLinkCont{
+.gameLinkCont {
     display: flex;
     justify-content: center;
 
@@ -95,15 +108,16 @@ body{
 
     background-color: rgb(0, 136, 169, 1);
     border: none;
-    border-radius:14px;
-    cursor:pointer;
+    border-radius: 14px;
+    cursor: pointer;
     transition: all 0.3s ease;
     color: white;
-    font-family: "Montserrat", sans-serif;
 
+    overflow: hidden;
     width: 70%;
 }
-.gamelink{
+
+.gamelink {
     text-align: center;
 
     padding: 10px 50px;
@@ -111,14 +125,18 @@ body{
     height: 100%;
 
     text-decoration: none;
-    color:white;
+    color: white;
+}
+
+.gameLinkCont:hover {
+    background-color: rgb(0, 136, 169, 0.8);
 }
 
 
 
 
 /* leaderboardContainer */
-.leaderboardContainer{
+.leaderboardContainer {
     width: 80%;
     background-color: rgb(230, 230, 230);
 
@@ -126,13 +144,60 @@ body{
 
     padding: 12px;
 }
-.scoreContainer{
-    display:grid; 
-    grid-template-columns: 1fr 3fr;
+
+.scoreContainer {
+    display: flex;
+    justify-content: space-between;
 
     border-bottom: 1px solid rgba(171, 156, 156, 0.6);
     padding: 8px;
+    margin-top: 12px;
+}
+
+.score {
+    margin: 0px auto;
 }
 
 
+/* Media Queries */
+@media (width < 1326px) {
+    .InfoImgCont {
+        display: flex;
+        flex-direction: column;
+    }
 
+    .infoContainer {
+        margin-bottom: 18px;
+    }
+}
+
+@media (width < 750px) {
+    main {
+        font-size: smaller;
+    }
+
+    .imgSlider {
+        width: 100%;
+        font-size: smaller;
+    }
+
+    .imageArrows {
+        width: 270px;
+    }
+}
+
+@media (width < 600px) {
+    main {
+        font-size: x-small;
+    }
+
+    .imageSlider {
+        font-size: x-small;
+    }
+    .gamesContainer{
+        padding: 5px 0px;
+    }
+    .InfoImgCont{
+        padding: 5px;
+    }
+}
