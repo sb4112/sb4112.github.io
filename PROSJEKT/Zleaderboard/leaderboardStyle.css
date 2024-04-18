@@ -2,6 +2,9 @@
 body {
     background-color: aliceblue;
     font-family: "Montserrat", sans-serif;
+
+    display:flex;
+    flex-direction: column;
 }
 
 
@@ -169,6 +172,9 @@ body {
     .infoContainer {
         margin-bottom: 18px;
     }
+    .imageSlider{
+        width: 80%;
+    }
 }
 
 @media (width < 750px) {
@@ -179,10 +185,6 @@ body {
     .imgSlider {
         width: 100%;
         font-size: smaller;
-    }
-
-    .imageArrows {
-        width: 270px;
     }
 }
 

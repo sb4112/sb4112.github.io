@@ -61,6 +61,29 @@ h1, p{
 }
 
 /* Main */
+/* Go to leaderboard */
+#BtnContainer{
+    margin: 20px;
+
+    width: 80%;
+}
+#LeaderboardBtn{
+    text-align: center;
+
+    padding: 10px 30px;
+    background-color: rgb(0, 136, 169, 1);
+    border: none;
+    border-radius:14px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+#LeaderboardBtn:hover{
+    background-color: rgb(0, 136, 169, 0.7);
+}
+
+/* Main */
 /* Spillbrett */
 #spillbrett{
     background-color: rgb(120, 118, 118);

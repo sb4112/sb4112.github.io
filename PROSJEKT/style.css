@@ -1,75 +1,112 @@
 /* Body */
 body{
-    background-color:aliceblue;
     font-family: "Montserrat", sans-serif;
 }
 
-/* Main */
 main{
-    background-color: white;
-
-    border-radius: 12px;
-
-    display: flex;
+    display:flex;
     flex-direction: column;
     align-items: center;
 
-    margin: 12px;
+    padding: 15px;
 }
+
 /* Main */
-/* Overskrift */
-#overskrift{
-    width: 80%;
+/* General */
+#headline{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: 12px;
+}
+h1{
+    margin-bottom: 8px;
+}
+#headlineP{
+    font-weight: 500;
+}
+
+.gameContainer{
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.AboutPlayCont{
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    align-items: center;
+}
+.PlayCont{
     display:flex;
     justify-content: center;
-}
+    align-items: flex-end;
 
-/* Main */
-/* Spill-container */
-#spillContainer{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    height: 80%;
-    width: 80%;
-}
-
-
-/* Spill-container */
-/* spillEl */
-.spillDiv{
-    background-color: #24252a;
-
-    width: 300px;
-    height: 200px;
-
-    margin: 30px;
-
-    border: solid 3px black;
-    border-radius: 12%;
+   /*  width: fit-content;
+    height: fit-content; */
 
     overflow: hidden;
-}
-.spillTittel{
-    background-color: rgb(67, 211, 240);
+    border-radius: 12px;
 
-    font-family: "rowdies", sans-serif;
-    color:white;
-    font-weight: 300;
-    font-size: larger;
-
-    width:110%;
-    height: 12%;
-    padding-left: 12%;
+    margin:auto;
+    transition: all 0.3s ease;
 }
-.spillLink{
+.gameLink{
+    position: relative;
+}
+.PlayCont:hover{
+    transform: scale(1.07);
+}
+Img{
+    width: 300px;
+}
+.Pplay{
     display:flex;
-    flex-direction:column;
-    justify-content: flex-end;
+    justify-content: center;
 
-    text-decoration: none;
+    border-radius: 12px;
+    position:absolute;
 
-    width:100%;
-    height:100%;
+    background-color: rgba(182, 182, 182, 0.6);
+
+    width:40%;
+    margin-bottom: 2%;
+}
+
+
+@media (width < 940px){
+    .AboutPlayCont{
+        display:grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (width < 540px){
+    main{
+        padding: 8px;
+        font-size:smaller;
+    }
+    .gameContainer{
+        padding: 6px;
+        margin: 8px;
+    }
+    .info{
+        margin: 6px;
+    }
+}
+@media (width < 410px){
+    main{
+        font-size: small;
+        padding: 0;
+    }
+    .gameContainer{
+        width: 100%;
+    }
 }

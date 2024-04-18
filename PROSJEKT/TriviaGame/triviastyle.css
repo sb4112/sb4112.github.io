@@ -89,7 +89,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
-    width: 800px;
+    width: 100%;
     margin-top: 45px;
 }
 #scoreCont{
@@ -120,7 +120,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
-    width:450px;
+    width:60%;
     margin-top: 18px;
 }
 /* buttoncontainer */
@@ -191,4 +191,30 @@
     opacity: 0.78;
 }
 
+
+@media (width < 835px){
+    #statsContainer{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+
+        width: 100%;
+    }
+
+    #scoreCont, #skipsCont, #wrongAnswCont{
+        justify-content: flex-start;
+        padding: 6px;
+    }
+    #buttonContainer{
+        width:80%;
+    }
+}
+
+@media (width < 635px){
+    main{
+        font-size: smaller;
+    }
+    #buttonContainer{
+        font-size:smaller;
+    }
+}
 

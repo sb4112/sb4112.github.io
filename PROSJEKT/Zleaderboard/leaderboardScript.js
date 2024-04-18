@@ -54,7 +54,6 @@ let TriviaEndFoot = "If you answer three questions wrong, the game is over"
 
 let imagesLoaded = 0
 let totalImages = 8
-let gameSet = false
 
 function checkImagesLoaded() {
     imagesLoaded++
@@ -114,7 +113,7 @@ function setGameContainers() {
         imgSliderIndex: 0,
         gameLink: '../TriviaGame/trivia.html',
         leaderboard : TriviaScoreArray,
-        suffix : 'correct in a row'
+        suffix : ' pts'
     }
 
     // Array av spillene 
