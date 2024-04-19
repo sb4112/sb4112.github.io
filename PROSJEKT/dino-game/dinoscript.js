@@ -12,7 +12,7 @@ let FlipPhoneCont = document.querySelector('#flipPhone')
 
 
 // Score
-let DinoScoreArray = []
+let DinoScoreArray = [0, 0, 0, 0, 0]
 
 let StoredDinoScoreArray = localStorage.getItem('DinoScoreArray')
 if (StoredDinoScoreArray) {
@@ -306,19 +306,32 @@ function update() {
 
 }
 
+// For devices with mouse
 JumpUpBtn.addEventListener('click', function(){
     if (dinoYspawn == dinoY && !dino.ducking){
         velocityY = -10.6
     }
 })
 DuckDownBtn.addEventListener('mousedown', function(){
-    if (dinoYspawn = dinoY){
+    if (dinoYspawn == dinoY){
         dino.ducking = true
     }
 })
 document.addEventListener('mouseup', function(){
     dino.ducking = false
 })
+
+// Ipad and iphone
+DuckDownBtn.addEventListener('touchstart', function(){
+    if(dinoYspawn == dinoY){
+        dino.ducking = true
+    }
+})
+DuckDownBtn.addEventListener('touchend', function(){
+    dino.ducking = false
+})
+
+
 
 function dinoJump(e) {
     if (gameOver) {

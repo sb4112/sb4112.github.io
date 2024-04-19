@@ -95,7 +95,7 @@ function setGameContainers() {
     dinoGame = {
         class: "DinoGame",
         name: "Dino-game",
-        info: "Dino Game is a classic browser-based game originally introduced as a quirky feature in Google Chrome, appearing when users encountered connection issues. In this game, players navigate their dinosaur character through obstacles by utilizing keyboard controls: jump over hurdles by pressing the spacebar or the arrow-up key and duck under obstacles by pressing the arrow-down key. By staying alive your score increases; try to get a new highscore!",
+        info: "Dino Game is a classic browser-based game originally introduced as a quirky feature in Google Chrome, appearing when users encountered connection issues. In this game, players navigate their dinosaur character through obstacles by utilizing keyboard controls: jump over hurdles by pressing the spacebar or the arrow-up key and duck under obstacles by pressing the arrow-down key. If you are playing on a device without a keyboard, utalize the buttons under the gameboard. By staying alive your score increases; try to get a new highscore!",
         imgSlider: dinoImgs,
         imgFooter: DinoGameFooter,
         imgSliderIndex: 0,

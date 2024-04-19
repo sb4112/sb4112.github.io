@@ -28,7 +28,7 @@ let wAnswers
 let UserAnswer
 
 let Questions = []
-let TriviaScoreArray = []
+let TriviaScoreArray = [0, 0, 0, 0, 0]
 
 let currentQuestIndex = 0
 
