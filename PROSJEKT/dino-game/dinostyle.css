@@ -113,3 +113,29 @@ h1, p{
 
     cursor: pointer;
 }
+
+/* Main */
+/* Mobil buttons */
+#mobileBtns{
+    margin-top: 4px;
+    display:flex;
+    justify-content: center;
+    width: 180px;
+}
+#JumpUp, #DuckDown{
+    background-color: lightgray;
+    text-align: center;
+    width: 80px;
+    margin: auto;
+}
+.fa-caret-up, .fa-caret-down{
+    font-size: 30px;
+}
+
+/* Main */
+/* Flip phone */
+#flipPhone{
+    position: absolute;
+    font-family: "Montserrat", sans-serif;
+    display: none;
+}

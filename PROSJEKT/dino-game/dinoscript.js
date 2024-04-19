@@ -6,6 +6,9 @@ let restartCont = document.querySelector('#restartCont')
 let gameOverCont = document.querySelector('#gameOver')
 let scoreEl = document.querySelector('p')
 let scoreContainer = document.querySelector('#scoreCont')
+let JumpUpBtn = document.querySelector('#JumpUp')
+let DuckDownBtn = document.querySelector('#DuckDown')
+let FlipPhoneCont = document.querySelector('#flipPhone')
 
 
 // Score
@@ -156,6 +159,7 @@ trackImg.src = track.img
 
 document.addEventListener('keydown', dinoJump)
 
+
 let intervalID = setInterval(update, 10.00)
 let obstacleSpawnTime = performance.now()
 let cloudSpawnTime = performance.now()
@@ -163,6 +167,15 @@ let trackSpawnTime = performance.now()
 
 
 function update() {
+    if(window.innerWidth < 600){
+        ctx.clearRect(0, 0, board.width, board.height)
+        gameOverCont.style.display = "none"
+        FlipPhoneCont.style.display = "inline"
+        return
+    }
+    else{
+        FlipPhoneCont.style.display = "none"
+    }
     if (gameOver) {
         clearInterval(intervalID)
 
@@ -293,11 +306,24 @@ function update() {
 
 }
 
+JumpUpBtn.addEventListener('click', function(){
+    if (dinoYspawn == dinoY && !dino.ducking){
+        velocityY = -10.6
+    }
+})
+DuckDownBtn.addEventListener('mousedown', function(){
+    if (dinoYspawn = dinoY){
+        dino.ducking = true
+    }
+})
+document.addEventListener('mouseup', function(){
+    dino.ducking = false
+})
+
 function dinoJump(e) {
     if (gameOver) {
         return
     }
-
     if ((e.code == "Space" || e.code == "ArrowUp") && dinoYspawn == dinoY) {
         if (!dino.ducking) {
             velocityY = -10.6

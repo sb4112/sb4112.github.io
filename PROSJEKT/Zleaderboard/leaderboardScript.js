@@ -173,6 +173,9 @@ function setGameContainers() {
             nrEl.classList.add('nr')
             let scoreEl = document.createElement('div')
             scoreEl.classList.add('score')
+            if (games[i].leaderboard[j] == "undefined"){
+                games[i].leaderboard[j] = 0
+            }
             scoreEl.innerHTML = `${games[i].leaderboard[j]} ${games[i].suffix}`
 
             leaderboardCont.appendChild(scoreContainer)
