@@ -34,8 +34,8 @@ let board = {
 let dino = {
     width: 88,
     height: 94,
-    normal: "dinoBilder/dino.png",
-    duck: "dinoBilder/dino-duck.png",
+    normal: "dino-bilder/dino.png",
+    duck: "dino-bilder/dino-duck.png",
     ducking: false
 }
 let dinoDuck = {
@@ -50,7 +50,7 @@ let cloudArray = []
 let cloud = {
     width: 55,
     height: 45,
-    img: "dinoBilder/cloud.png"
+    img: "dino-bilder/cloud.png"
 }
 
 // Track
@@ -59,7 +59,7 @@ let trackArray = []
 let track = {
     width: board.width,
     height: 30,
-    img: "dinoBilder/track.png"
+    img: "dino-bilder/track.png"
 }
 //Obstacles
 let obstacleArray = []
@@ -67,15 +67,15 @@ let obstacleArray = []
 // cactus
 let cactus1 = {
     width: 34,
-    img: "dinoBilder/cactus1.png"
+    img: "dino-bilder/cactus1.png"
 }
 let cactus2 = {
     width: 69,
-    img: "dinoBilder/cactus2.png"
+    img: "dino-bilder/cactus2.png"
 }
 let cactus3 = {
     width: 102,
-    img: "dinoBilder/cactus3.png"
+    img: "dino-bilder/cactus3.png"
 }
 
 let cactusheight = 70
@@ -84,7 +84,7 @@ let cactusheight = 70
 let bird = {
     width: 74,
     height: 55,
-    img: "dinoBilder/bird.png"
+    img: "dino-bilder/bird.png"
 
 }
 
@@ -179,7 +179,7 @@ function update() {
 
 
             dinoYspawn = board.height - dino.height
-            dinoImg.src = "dinoBilder/dino.png"
+            dinoImg.src = "dino-bilder/dino.png"
             dinoImg.onload = function () {
                 ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
             }
@@ -277,7 +277,7 @@ function update() {
                 ctx.drawImage(trackImg, 0, trackYspawn, track.width, track.height)
             }
             gameOver = true
-            dinoImg.src = "dinoBilder/dino-dead.png"
+            dinoImg.src = "dino-bilder/dino-dead.png"
             dinoImg.onload = function () {
                 ctx.drawImage(dinoImg, dinoXspawn, dinoYspawn, dino.width, dino.height)
             }
