@@ -1,6 +1,6 @@
 // Importerer objekter fra andre filer 
-import { DinoScoreArray } from "../DinoGame/dinoscript.js"
-import { TriviaScoreArray } from "../TriviaGame/triviascript.js"
+import { DinoScoreArray } from "../dino-game/dinoscript.js"
+import { TriviaScoreArray } from "../trivia-game/triviascript.js"
 
 console.log(TriviaScoreArray)
 console.log(DinoScoreArray)

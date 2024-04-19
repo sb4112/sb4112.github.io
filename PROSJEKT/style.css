@@ -44,21 +44,18 @@ h1{
     align-items: center;
 }
 .PlayCont{
+    position: relative;
+
     display:flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 
-   /*  width: fit-content;
-    height: fit-content; */
 
     overflow: hidden;
     border-radius: 12px;
 
     margin:auto;
     transition: all 0.3s ease;
-}
-.gameLink{
-    position: relative;
 }
 .PlayCont:hover{
     transform: scale(1.07);
@@ -67,8 +64,7 @@ Img{
     width: 300px;
 }
 .Pplay{
-    display:flex;
-    justify-content: center;
+    text-align: center;
 
     border-radius: 12px;
     position:absolute;
