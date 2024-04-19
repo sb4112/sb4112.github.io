@@ -180,7 +180,7 @@ function update() {
         clearInterval(intervalID)
 
         gameOverCont.style.visibility = 'visible'
-        scoreContainer.style.visibility = 'visible'
+        scoreContainer.style.display = 'inline'
 
         restartCont.addEventListener('click', function () {
             clearInterval(intervalID)
@@ -212,7 +212,7 @@ function update() {
     }
     else {
         gameOverCont.style.visibility = 'hidden'
-        scoreCont.style.visibility = 'hidden'
+        scoreCont.style.display = 'none'
     }
 
     //Bestemmer dinos høyde og yspawn

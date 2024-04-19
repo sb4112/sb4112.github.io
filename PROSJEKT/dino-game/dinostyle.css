@@ -50,7 +50,7 @@ h1, p{
 #scoreCont{
     background-color: rgb(217, 217, 217);
 
-    visibility: hidden;
+    display: none;
 
     padding: 20px;
     border-radius: 12px;
@@ -64,6 +64,10 @@ h1, p{
     margin: 20px;
 
     width: 80%;
+}
+#leaderboardLink{
+    text-decoration: none;
+    color:white;
 }
 #LeaderboardBtn{
     text-align: center;
@@ -120,16 +124,16 @@ h1, p{
     margin-top: 4px;
     display:flex;
     justify-content: center;
-    width: 180px;
+    width: 220px;
 }
 #JumpUp, #DuckDown{
     background-color: lightgray;
     text-align: center;
-    width: 80px;
+    width: 100px;
     margin: auto;
 }
 .fa-caret-up, .fa-caret-down{
-    font-size: 30px;
+    font-size: 38px;
 }
 
 /* Main */
@@ -137,5 +141,7 @@ h1, p{
 #flipPhone{
     position: absolute;
     font-family: "Montserrat", sans-serif;
+    text-align: center;
     display: none;
+    margin: 50px;
 }

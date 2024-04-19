@@ -123,6 +123,11 @@
     width:60%;
     margin-top: 18px;
 }
+#catagory, #checkAnswer, #nextQuestion{
+    height: auto;
+    color:black;
+    width:100%;
+}
 /* buttoncontainer */
 /* select catagory / answer / next question / restart / refresh */
 #catagory{
@@ -215,6 +220,14 @@
     }
     #buttonContainer{
         font-size:smaller;
+    }
+    #catagory, #checkAnswer, #nextQuestion{
+        font-size: smaller;
+    }
+}
+@media (width < 470px){
+    #buttonContainer{
+        width: 95%;
     }
 }
 
