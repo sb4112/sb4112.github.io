@@ -229,5 +229,9 @@
     #buttonContainer{
         width: 95%;
     }
+    #OptionCont{
+        display: flex;
+        flex-direction: column;
+    }
 }
 

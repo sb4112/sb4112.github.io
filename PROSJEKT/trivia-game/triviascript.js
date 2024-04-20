@@ -254,7 +254,14 @@ function restartGame() {
     answeredWrong = 0
 
     statsContainer.innerHTML = ''
+    if (window.innerWidth > 835){
+    statsContainer.style.gridTemplateColumns = "1fr"
     statsContainer.style.gridTemplateColumns = "1fr 1fr 1fr"
+    }
+    else{
+        statsContainer.style.gridTemplateColumns = "1fr"
+        statsContainer.style.gridTemplateRows = "1fr 1fr 1fr"
+    }
     statsContainer.style.fontWeight = "normal"
     statsContainer.appendChild(wrongAnswCont)
     statsContainer.appendChild(scoreCont)
