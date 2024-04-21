@@ -29,13 +29,8 @@ body {
     justify-content: center;
 }
 
-.headline {
-    font-size: 24;
-}
-
 .subHead {
     font-weight: 600;
-    font-size: 14;
 }
 
 /* AboutContainer */

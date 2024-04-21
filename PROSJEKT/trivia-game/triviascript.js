@@ -32,7 +32,6 @@ let TriviaScoreArray = [0, 0, 0, 0, 0]
 
 let currentQuestIndex = 0
 
-/* let refreshExist = false */
 let fetching
 
 let answeredWrong = 0
@@ -107,7 +106,7 @@ function nextQuestion() {
 
     console.log(skips)
     if (skips <= 0 || checkAnswerEl.style.display == "inline") {
-        if (skips >= 1) {
+        if (skips >= 1 && !fetching) {
             skips -= 1
             skipsEl.innerHTML = `Skips remaining : ${skips}`
         }
@@ -153,7 +152,6 @@ function nextQuestion() {
         Questions = []
         if (fetching == false) {
             getQuestions()
-            nextQuestion()
         }
     }
 }
@@ -224,12 +222,21 @@ function checkAnswer() {
         restartEl.classList.add('restartBtn')
         restartEl.addEventListener('click', restartGame)
 
+        let leaderboardBtn =  document.createElement('div')
+        let leaderboardLink = document.createElement('a')
+        leaderboardLink.setAttribute('href', "../Zleaderboard/leaderboard.html")
+        leaderboardLink.classList.add('leaderboardLink')
+        leaderboardBtn.classList.add('leaderboardBtn')
+        leaderboardBtn.innerText = "Go to leaderboard"
+        leaderboardLink.appendChild(leaderboardBtn)
+
         buttonContainerEl.removeChild(checkAnswerEl)
         buttonContainerEl.removeChild(nextQuestionEl)
         buttonContainerEl.removeChild(selectEl)
 
         buttonContainerEl.appendChild(restartEl)
-        buttonContainerEl.style.gridTemplateColumns = "1fr"
+        buttonContainerEl.appendChild(leaderboardLink)
+        buttonContainerEl.style.gridTemplateColumns = "1fr 1fr"
 
 
         statsContainer.innerHTML = `Final score : ${score} `
@@ -250,8 +257,9 @@ function checkAnswer() {
 /* restart function */
 function restartGame() {
     score = 0
-    skips = 4
+    skips = 3
     answeredWrong = 0
+    fetching = true 
 
     statsContainer.innerHTML = ''
     if (window.innerWidth > 835){
@@ -279,7 +287,9 @@ function restartGame() {
 
 
     let restartBtn = document.querySelector('.restartBtn')
+    let leaderboardBtn = document.querySelector('.leaderboardLink')
     buttonContainerEl.removeChild(restartBtn)
+    buttonContainerEl.removeChild(leaderboardBtn)
 
     buttonContainerEl.appendChild(selectEl)
     buttonContainerEl.appendChild(checkAnswerEl)
@@ -314,22 +324,6 @@ function ScoreTraverser() {
     console.log(TriviaScoreArray)
 
 }
-/* refresh function (429)
-function refresh() {
-    let refreshBtn = document.querySelector('.refresh_429')
-
-    buttonContainerEl.removeChild(refreshBtn)
-
-    buttonContainerEl.appendChild(selectEl)
-    buttonContainerEl.appendChild(checkAnswerEl)
-    buttonContainerEl.appendChild(nextQuestionEl)
-
-
-    buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
-
-    refreshExist = false
-} */
-
 
 
 if(nextQuestionEl){

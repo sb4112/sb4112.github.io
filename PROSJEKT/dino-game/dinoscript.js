@@ -322,12 +322,14 @@ document.addEventListener('mouseup', function(){
 })
 
 // Ipad and iphone
-DuckDownBtn.addEventListener('touchstart', function(){
+DuckDownBtn.addEventListener('touchstart', function(e){
+    e.preventDefault()
     if(dinoYspawn == dinoY){
         dino.ducking = true
     }
 })
-DuckDownBtn.addEventListener('touchend', function(){
+DuckDownBtn.addEventListener('touchend', function(e){
+    e.preventDefault();
     dino.ducking = false
 })
 

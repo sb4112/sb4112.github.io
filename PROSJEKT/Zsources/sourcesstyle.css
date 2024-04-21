@@ -15,12 +15,13 @@ main{
 .sourceCategory{
     padding: 20px;
 }
-.sourceCategory > li{
+.sourceCategory li{
     margin: 8px;
     font-style: italic;
     font-weight: 600;
 }
-.sourceCategory > li > a{
+#sources a{
+    color: blue;
     font-style: normal;
     font-weight: 500;
 }

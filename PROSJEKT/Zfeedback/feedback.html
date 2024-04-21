@@ -26,7 +26,7 @@
             <ul class="navListe" id="mainLinks">
                 <li><a class="navlinks" href="../Zsources/sources.html">Sources</a></li>
                 <li><a class="navlinks" href="../Zleaderboard/leaderboard.html">About</a></li>
-                <li><a class="navlinks" href="../Zfeedback/feedback.html" target="_blank"><button id="tilbakemelding">Feedback</button></a></li>
+                <li><a class="navlinks" href="../Zfeedback/feedback.html" target="_blank"><div id="tilbakemelding">Feedback</div></a></li>
             </ul>
         </nav>
     </header>
@@ -35,25 +35,25 @@
         <div id="feedbackContainer">
             <h2>Feedback</h2>
 
-            <form action="">
+            <form action="https://formsubmit.co/3df9e0ef2a8d4671052b8c50b1ed830e" method="post">
                 <div id="MostLiked" class="formContainer">
                     <h4>Which game did you like the most?</h4>
                     <label>
-                        <input type="radio" name="g1" value="Trivia"> Trivia-Game
+                        <input type="radio" name="mostLiked" value="Trivia"> Trivia-Game
                     </label>
                     <label>
-                        <input type="radio" name="g1" value="Dino"> Dino-Game
+                        <input type="radio" name="mostLiked" value="Dino"> Dino-Game
                     </label>
                 </div>
 
                 <div class="formContainer">
                     <h4>What did you like about the games</h4>
-                    <textarea id="WhyLiked" placeholder="I liked..."></textarea>
+                    <textarea id="WhyLiked" placeholder="I liked..." name="whyLiked"></textarea>
                 </div>
 
                 <div class="formContainer">
                     <h4>Rate the trivia-game on a scale from 1-10</h4>
-                    <select id="TriviaRating">
+                    <select id="TriviaRating" name="TriviaRating">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -69,7 +69,7 @@
                 
                 <div class="formContainer">
                     <h4>Rate the dino-game on a scale from 1-10</h4>
-                    <select id="DinoRating">
+                    <select id="DinoRating" name="DinoRating">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -85,10 +85,12 @@
 
                 <div id="other" class="formContainer">
                     <h4>Anything else?</h4>
-                    <textarea placeholder="Anything else"></textarea>
+                    <textarea placeholder="Anything else..." name="Else"></textarea>
                 </div>
 
                 <div id="submitCont"><button id="submit">Sumbit</button></div>
+
+                <p id="submitInfo">After sumbitting the form, it might take a few seconds for the page to load.</p>
             </form>
         </div>
     </main>
