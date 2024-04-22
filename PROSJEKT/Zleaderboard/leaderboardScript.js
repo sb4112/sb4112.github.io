@@ -45,11 +45,11 @@ TriviaEnd.alt = "Three answers wrong, game over."
 let DinoStartFoot = "The game starts as soon as you load the page. Be ready for coming obstacles!"
 let DinoJumpFoot = "Press the space-bar or the arrow-up-key to jump over obstacles"
 let DinoDuckFoot = "Press the arrow-down-key to duck from coming obstacles"
-let DinoDeadFoot = "If the Dino hits an obstacles, its game-over"
+let DinoDeadFoot = "If the Dino hits an obstacles, it's game-over"
 
 let TriviaStartFoot = "At the start of the game you'll get a general knowledge question, take your time before answering!"
 let TriviaCatagoryFoot = "Categories are set for 5 questions at a time, chose wisely!"
-let TriviaSkipFoot = "If you dont know the answer to the question, you can use on of your 3 available skips"
+let TriviaSkipFoot = "If you dont know the answer to the question, you can use one of your 3 available skips"
 let TriviaEndFoot = "If you answer three questions wrong, the game is over"
 
 let imagesLoaded = 0

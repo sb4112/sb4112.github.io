@@ -1,8 +1,4 @@
 export { TriviaScoreArray } 
-
-// For special caracters 
-/* Spør didrik neste time */
-
 // Henter objekter fra DOM
 let questionEl = document.querySelector('#question')
 let selectEl = document.querySelector('#catagory')
@@ -47,9 +43,8 @@ if (StoredTriviaScoreArray) {
 
 // Get questions (5)
 async function getQuestions() {
-    if (score != 0 || answeredWrong != 0 || skips != 3) {
-        fetching = true
-    }
+    fetching = true
+
     /* Api reletaed stuff  */
     let category = Number(selectEl.value)
     let url = `https://opentdb.com/api.php?amount=5&category=${category}`
@@ -75,7 +70,7 @@ async function getQuestions() {
         }
     }
 
-    /* Going trough the 20 fetched questions - making option array - shuffeling options - pushing the Question object into the array of questions */
+    /* Going trough the 5 fetched questions - making option array - shuffeling options - pushing the Question object into the array of questions */
     for (let j = 0; j < data.results.length; j++) {
         let questionsInfo = data.results[j]
         cAnswer = questionsInfo.correct_answer
@@ -115,15 +110,15 @@ function nextQuestion() {
             nextQuestionEl.removeEventListener('click', nextQuestion)
         }
 
-
     }
+    fetching = false
+
     optionContainer.innerHTML = ``
 
     buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
     checkAnswerEl.style.display = "inline"
 
     if (currentQuestIndex < (Questions.length - 1)) {
-        fetching = false
         let questionTitle = Questions[currentQuestIndex].Info.question
 
         questionEl.innerHTML = questionTitle
@@ -150,9 +145,7 @@ function nextQuestion() {
     else if (currentQuestIndex >= (Questions.length - 1)) {
         currentQuestIndex = 0
         Questions = []
-        if (fetching == false) {
-            getQuestions()
-        }
+        getQuestions()
     }
 }
 
@@ -211,6 +204,7 @@ function checkAnswer() {
 
 
         wrongAnswersEl.innerHTML = `Wrong Answers : ${answeredWrong}`
+        scoreEl.innerHTML = `Current score :  ${score}`
     }
 
     /* game over functionality */

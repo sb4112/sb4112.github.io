@@ -155,15 +155,13 @@ let trackImg = new Image()
 trackImg.src = track.img
 
 
-
-
 document.addEventListener('keydown', dinoJump)
 
 
 let intervalID = setInterval(update, 10.00)
 let obstacleSpawnTime = performance.now()
 let cloudSpawnTime = performance.now()
-let trackSpawnTime = performance.now()
+let trackSpawnTime 
 
 
 function update() {
