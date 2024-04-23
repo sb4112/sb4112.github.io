@@ -100,7 +100,6 @@ let gravity = 0.272
 
 // Variabler
 let gameOver = false
-let ScoreIsSet = false 
 let score = 0
 let timeForTrack = (board.width / velocityX) * -10
 
@@ -184,7 +183,6 @@ function update() {
             clearInterval(intervalID)
             cloudArray.splice(0, cloudArray.length)
             obstacleArray.splice(0, obstacleArray.length)
-            ScoreIsSet = false
             score = 0
 
 
@@ -460,17 +458,11 @@ function detectCollision(obstacle) {
 
 function ScoreTraverser() {
     if (DinoScoreArray.length < 5) {
-        if (!ScoreIsSet) {
             DinoScoreArray.push(score)
-            ScoreIsSet = true
-        }
     }
     else if (DinoScoreArray.length == 5) {
         if (score > DinoScoreArray[4]) {
-            if (!ScoreIsSet){
                 DinoScoreArray.unshift(score)
-                ScoreIsSet = true 
-            }
         }
     }
 
