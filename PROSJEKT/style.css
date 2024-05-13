@@ -1,50 +1,61 @@
 /* Body */
-body{
+body {
     font-family: "Montserrat", sans-serif;
 }
 
-main{
-    display:flex;
+main {
+    display: flex;
     flex-direction: column;
     align-items: center;
+}
 
+#contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
+
+    max-width: 1000px;
 }
 
 /* Main */
 /* General */
-#headline{
-    display:flex;
+#headline {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 
     padding: 12px;
 }
-h1{
+
+h1 {
     margin-bottom: 8px;
 }
-#headlineP{
+
+#headlineP {
     font-weight: 500;
 }
 
-.gameContainer{
+.gameContainer {
     background-color: white;
     padding: 20px;
     margin: 10px;
     border-radius: 12px;
 
-    display:flex;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
 }
-.AboutPlayCont{
+
+.AboutPlayCont {
     display: grid;
     grid-template-columns: 5fr 3fr;
     align-items: center;
 }
-.PlayCont{
-    display:flex;
+
+.PlayCont {
+    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -52,63 +63,70 @@ h1{
     overflow: hidden;
     border-radius: 12px;
 
-    margin:auto;
+    margin: auto;
     transition: all 0.3s ease;
 }
-.gameLink{
-    display:flex;
+
+.gameLink {
+    display: flex;
     justify-content: center;
     align-items: center;
 
     position: relative;
 }
-.PlayCont:hover{
+
+.PlayCont:hover {
     transform: scale(1.07);
 }
-Img{
+
+Img {
     width: 300px;
 }
-.Pplay{
+
+.Pplay {
     text-align: center;
-    color:white;
+    color: white;
 
     border-radius: 12px;
-    position:absolute;
+    position: absolute;
 
     background-color: rgba(182, 182, 182, 0.6);
 
-    width:40%;
+    width: 40%;
     margin-bottom: 2%;
 }
 
-
-@media (width < 940px){
-    .AboutPlayCont{
-        display:grid;
+@media (width < 940px) {
+    .AboutPlayCont {
+        display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr;
     }
 }
 
-@media (width < 540px){
-    main{
+@media (width < 540px) {
+    #contentContainer {
         padding: 8px;
-        font-size:smaller;
+        font-size: smaller;
     }
-    .gameContainer{
+
+    .gameContainer {
         padding: 6px;
         margin: 8px;
     }
-    .info{
+
+    .info {
         margin: 6px;
     }
 }
-@media (width < 410px){
-    main{
+
+@media (width < 410px) {
+    #contentContainer {
         font-size: small;
         padding: 0;
     }
-    .gameContainer{
+
+    .gameContainer {
         width: 100%;
     }
 }

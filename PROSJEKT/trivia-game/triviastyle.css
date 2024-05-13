@@ -8,6 +8,37 @@
     align-items: center;
 
     font-family: "Inter", sans-serif;
+    width: 80%; 
+}
+
+/* Triviacontainer */
+/* PopUP */
+#catagoryPopUp{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+    width:70%;
+
+    background-color: white;
+    border-radius: 12px;
+    padding: 50px;
+
+    border: 1px solid black;
+
+    display:none;
+
+    text-align: center;
+
+    z-index: 6;
+}
+#catagoryPopUp > p{
+    margin: 25px;
 }
 /* Triviacontainer */
 /* functioncontainer */
@@ -37,7 +68,7 @@
     display: grid;
 
     grid-template-columns: 1fr 1fr;
-    width: 100%;
+    width:100%;
 
     margin-top: 20px;
 
@@ -236,6 +267,9 @@
     #buttonContainer{
         width:80%;
     }
+    #catagoryPopUp{
+        width:80%;
+    }
 }
 
 @media (width < 635px){
@@ -244,6 +278,9 @@
     }
     #catagory, #checkAnswer, #nextQuestion, .leaderboardBtn{
         font-size: smaller;
+    }
+    #catagoryPopUp{
+        padding: 8px;
     }
 }
 @media (width < 470px){

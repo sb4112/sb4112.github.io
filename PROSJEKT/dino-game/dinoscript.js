@@ -1,6 +1,7 @@
 export { DinoScoreArray }
 
 //Henter objekter fra DOM
+let dinoContainer = document.querySelector('#dinoContainer')
 let boardEl = document.querySelector('#spillbrett')
 let restartCont = document.querySelector('#restartCont')
 let gameOverCont = document.querySelector('#gameOver')
@@ -9,7 +10,6 @@ let scoreContainer = document.querySelector('#scoreCont')
 let JumpUpBtn = document.querySelector('#JumpUp')
 let DuckDownBtn = document.querySelector('#DuckDown')
 let FlipPhoneCont = document.querySelector('#flipPhone')
-
 
 // Score
 let DinoScoreArray = [0, 0, 0, 0, 0]
@@ -21,7 +21,7 @@ if (StoredDinoScoreArray) {
 
 
 
-
+if (dinoContainer){
 // Objekter - alt som skal tegnes på canvas
 // board
 /* let board = {
@@ -29,7 +29,7 @@ if (StoredDinoScoreArray) {
     height: 300,
 } */
 let board = {
-    width: window.innerWidth - 100,
+    width: dinoContainer.offsetWidth - 100,
     height: 300
 }
 
@@ -478,5 +478,6 @@ function ScoreTraverser() {
     localStorage.setItem('DinoScoreArray', JSON.stringify(DinoScoreArray))
     console.log(DinoScoreArray)
 
+}
 }
 }

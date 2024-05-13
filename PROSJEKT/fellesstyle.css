@@ -13,6 +13,16 @@
 body{
     background-color: aliceblue;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* max-width */
+main > div{
+    max-width: 1100px;
+}
 
 /* Header */
 /* navbar */
@@ -25,6 +35,8 @@ header {
 
     background-color: #24252a;
     padding: 30px 2%;
+
+    width: 100%;
 }
 
 .navlinks{
@@ -81,7 +93,6 @@ header {
 
 
 /* Media Queries */
-
 @media (width < 800px) {
     header{
         padding: 15px 2%;

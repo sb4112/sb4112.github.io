@@ -14,6 +14,7 @@ let scoreCont = document.querySelector('#scoreCont')
 let skipsCont = document.querySelector('#skipsCont')
 let wrongAnswCont = document.querySelector('#wrongAnswCont')
 let currentCategory = document.querySelector('#currentCatagory')
+let PopUpEl = document.querySelector('#catagoryPopUp')
 
 
 
@@ -29,6 +30,7 @@ let TriviaScoreArray = [0, 0, 0, 0, 0]
 let currentQuestIndex = 0
 
 let fetching
+let PopUp = true
 
 let answeredWrong = 0
 let skips = 3
@@ -45,7 +47,28 @@ if (StoredTriviaScoreArray) {
 async function getQuestions() {
     fetching = true
 
+    if (PopUp){
+        buttonContainerEl.innerHTML = ''
+        PopUpEl.style.display = "inline"
+        selectEl.style.borderColor = "black"
+        selectEl.style.borderWidth = "1px"
+    
+        selectEl.addEventListener('change', function(){
+            PopUp = false
+            PopUpEl.style.display = "none"
+
+            selectEl.style.borderWidth = "0px"
+            buttonContainerEl.appendChild(selectEl)
+            buttonContainerEl.appendChild(checkAnswerEl)
+            buttonContainerEl.appendChild(nextQuestionEl)
+
+            getQuestions()
+        } )
+        
+    }
+
     /* Api reletaed stuff  */
+    if(PopUp == false){
     let category = Number(selectEl.value)
     let url = `https://opentdb.com/api.php?amount=5&category=${category}`
 
@@ -94,6 +117,7 @@ async function getQuestions() {
     }
     console.log(Questions)
     nextQuestion()
+}
 }
 
 /* Function Next question */
@@ -254,6 +278,7 @@ function restartGame() {
     skips = 3
     answeredWrong = 0
     fetching = true 
+    PopUp = true
 
     statsContainer.innerHTML = ''
     if (window.innerWidth > 835){
@@ -285,14 +310,16 @@ function restartGame() {
     buttonContainerEl.removeChild(restartBtn)
     buttonContainerEl.removeChild(leaderboardBtn)
 
-    buttonContainerEl.appendChild(selectEl)
     buttonContainerEl.appendChild(checkAnswerEl)
     buttonContainerEl.appendChild(nextQuestionEl)
+
+    selectEl.style.boarderWidth = "1px"
+    PopUpEl.appendChild(selectEl)
 
 
     buttonContainerEl.style.gridTemplateColumns = "1fr 1fr 1fr"
 
-    nextQuestion()
+    getQuestions()
 }
 
 function ScoreTraverser() {

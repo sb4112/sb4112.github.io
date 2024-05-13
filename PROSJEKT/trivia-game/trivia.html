@@ -34,6 +34,33 @@
     <main>
         <div id="triviaContainer">
 
+            <div id="catagoryPopUp">
+                <h3>Pick catagory</h3>
+
+                <p>Welcome to trivia-game! Before you embark on your trivia-mastering journey, you'll have to pick a catagory. Chose wisely, the catagory is set for 5 questions at a time. Utilize the catagory-menu besides the check-answer button to change catagory underway. </p>
+
+                <select id="catagory">
+                    <option value="9" selected>General knowledge</option>
+                    <optgroup label="Entertainment">
+                        <option value="10">Books</option>
+                        <option value="11">Movies</option>
+                        <option value="12">Music</option>
+                        <option value="31">Anime</option>
+                    </optgroup>
+                    <optgroup label="Science">
+                        <option value="17">Nature</option>
+                        <option value="18">Computers</option>
+                        <option value="19">Mathematics</option>
+                    </optgroup>
+                    <optgroup label="Mixed">
+                        <option value="21">Sports</option>
+                        <option value="22">Geography</option>
+                        <option value="23">History</option>
+                        <option value="27">Animals</option>
+                    </optgroup>
+                </select>
+            </div>
+
             <div id="FunctionContainer">
                 <h3 id="question"></h3>
 
@@ -54,27 +81,6 @@
                 </div>
 
                 <div id="buttonContainer">
-                    <select id="catagory">
-                        <option value="9" selected>General knowledge</option>
-                        <optgroup label="Entertainment">
-                            <option value="10">Books</option>
-                            <option value="11">Movies</option>
-                            <option value="12">Music</option>
-                            <option value="31">Anime</option>
-                        </optgroup>
-                        <optgroup label="Science">
-                            <option value="17">Nature</option>
-                            <option value="18">Computers</option>
-                            <option value="19">Mathematics</option>
-                        </optgroup>
-                        <optgroup label="Mixed">
-                            <option value="21">Sports</option>
-                            <option value="22">Geography</option>
-                            <option value="23">History</option>
-                            <option value="27">Animals</option>
-                        </optgroup>
-                    </select>
-
                     <button id="checkAnswer">Answer</button>
                     <button id="nextQuestion">Next Question</button>
                 </div>

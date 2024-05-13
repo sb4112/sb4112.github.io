@@ -49,7 +49,7 @@ let DinoDeadFoot = "If the Dino hits an obstacles, it's game-over"
 
 let TriviaStartFoot = "At the start of the game you'll get a general knowledge question, take your time before answering!"
 let TriviaCatagoryFoot = "Categories are set for 5 questions at a time, chose wisely!"
-let TriviaSkipFoot = "If you dont know the answer to the question, you can use one of your 3 available skips"
+let TriviaSkipFoot = "If you dont know the answer to the question, skip the question by clicking next question without having chosen an answer"
 let TriviaEndFoot = "If you answer three questions wrong, the game is over"
 
 let imagesLoaded = 0
